@@ -5,8 +5,11 @@ module.exports = {
     extend: {},
   },
   plugins: {
-    tailwindcss: {},
+    tailwindcss: {
+      
+    },
     autoprefixer: {},
+    
 },
 }
 
