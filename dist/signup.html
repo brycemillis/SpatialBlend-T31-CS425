@@ -2,96 +2,174 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="output.css">
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
-  <div class="flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="splashpage.html" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="C:\Users\bryce\Desktop\tailwindstart\Img\spatialBlendLogo.jpg" alt="Spatial Blend Logo" class="h-10">
-      <span class="self-center text-2xl font-bold whitespace-nowrap dark:text-black">SpatialBlend</span>
-    </a>
-    <div class="space-x-8 flex justify-right text-gray-600">
-      <div id="dropdown-container" class="group z-40 relative dropdown inline-block">
+    <div class="flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="splashpage.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="C:\Users\bryce\Desktop\tailwindstart\Img\spatialBlendLogo.jpg" alt="Spatial Blend Logo"
+                class="h-10">
+            <span class="self-center text-2xl font-bold whitespace-nowrap dark:text-black">SpatialBlend</span>
+        </a>
+        <div class="space-x-8 flex justify-right text-gray-600">
+            <div id="dropdown-container" class="group z-40 relative dropdown inline-block">
 
-        <button onclick="" href="#" class="hover:text-red-500">Tools
+                <button onclick="" href="#" class="hover:text-red-500">Tools
 
-          <img class="w-2 h-2 ml-8 cursor-pointer"
-            src="C:\Users\bryce\Documents\GitHub\SpatialBlend-T31-CS425\src\dropDown.svg">
-        </button>
-        <div id="dropdown-menu" class="group-hover:block absolute bg-white shadow-lg w-24 hidden">
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool 
-            1</a>
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool
-            2</a>
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool
-            3</a>
+                    <img class="w-2 h-2 ml-8 cursor-pointer"
+                        src="C:\Users\bryce\Documents\GitHub\SpatialBlend-T31-CS425\src\dropDown.svg">
+                </button>
+                <div id="dropdown-menu" class="group-hover:block absolute bg-white shadow-lg w-24 hidden">
+                    <a href="#"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool
+                        1</a>
+                    <a href="#"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool
+                        2</a>
+                    <a href="#"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool
+                        3</a>
+                </div>
+
+            </div>
+            <a href="imageCombine.html" class="hover:text-orange-500">Blend</a>
+            <a href="#" class="hover:text-yellow-500">Merge</a>
+            <a href="imageEditor.html" class="hover:text-green-500">Edit</a>
+            <a href="#" class="hover:text-blue-700">Examples</a>
+            <a href="#" class="hover:text-indigo-500">Pricing</a>
+            <a href="aboutUs.html" class="hover:text-violet-600">About Us</a>
+            <div class="space-x-2">
+                <a href="C:\Users\bryce\Documents\GitHub\SpatialBlend-T31-CS425\dist\login.html"
+                    class="pt-1 pb-1 px-2.5 text-blue-600 hover:text-blue-800 font-medium rounded-lg text-sm border-solid border-blue-700">Login</a>
+                <a href="C:\Users\bryce\Documents\GitHub\SpatialBlend-T31-CS425\dist\signup.html"
+                    class="pt-1 pb-1 px-2.5 text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm">Sign
+                    up</a>
+            </div>
         </div>
-
-      </div>
-      <a href="imageCombine.html" class="hover:text-orange-500">Blend</a>
-      <a href="#" class="hover:text-yellow-500">Merge</a>
-      <a href="imageEditor.html" class="hover:text-green-500">Edit</a>
-      <a href="#" class="hover:text-blue-700">Examples</a>
-      <a href="#" class="hover:text-indigo-500">Pricing</a>
-      <a href="aboutUs.html" class="hover:text-violet-600">About Us</a>
-      <div class="space-x-2">
-        <a href="C:\Users\bryce\Documents\GitHub\SpatialBlend-T31-CS425\dist\login.html"
-          class="pt-1 pb-1 px-2.5 text-blue-600 hover:text-blue-800 font-medium rounded-lg text-sm border-solid border-blue-700">Login</a>
-        <a href="C:\Users\bryce\Documents\GitHub\SpatialBlend-T31-CS425\dist\signup.html"
-          class="pt-1 pb-1 px-2.5 text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm">Sign up</a>
-      </div>
     </div>
-  </div>
-  <hr class="h-px border-0 dark:bg-gray-700 opacity-50">
+    <hr class="h-px border-0 dark:bg-gray-700 opacity-50">
 
-  <!-- Footer begins-->
-  <div class="flex flex-col min-h-screen">
-    <footer class="mt-auto">
-      <div class="w-full mx-auto p-4 md:py-8">
+
+
+
+
+
+
+
+<div class="flex min-h-screen flex-col justify-center bg-gray-50 py-12 sm:px-6 lg:px-8">
+    <div class="mx-auto w-full max-w-md sm:mx-auto">
+        <img class="mx-auto h-16 w-auto" src="https://www.svgrepo.com/show/416654/pencil-pen-write.svg" alt="Sign up symbol"> 
+        <h2 class="mt-4 text-center text-4xl leading-9 font-bold text-blue-600">
+            Create a new account
+        </h2>
+    </div>
+
+    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+            <form method="POST" action="#">
+                <div>
+                    <div class="mt-1 relative shadow-sm rounded-md">
+                        <input id="firstname" name="firstname" type="text" required="" value="" class=" appearance-none block w-full px-3 py-2 border border-blue-600 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-600 sm:text-sm sm:leading-5" placeholder="First name">
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <div class="mt-1 relative shadow-sm rounded-md">
+                        <input id="lastname" name="name" type="text" required="" value="" class="appearance-none block w-full px-3 py-2 border border-blue-600 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-600 sm:text-sm sm:leading-5" placeholder="Last name">
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <div class="mt-1 flex rounded-md shadow-sm">
+                        <input id="username" name="username" type="text" required="" value="" class="appearance-none block w-full px-3 py-2 border border-blue-600 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-600 sm:text-sm sm:leading-5" placeholder="Username">
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <div class="mt-1 relative shadow-sm rounded-md">
+                        <input id="email" name="email" type="email" required="" value="" class="appearance-none block w-full px-3 py-2 border border-blue-600 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-600 sm:text-sm sm:leading-5" placeholder="Email">
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <div class="mt-1 rounded-md shadow-sm">
+                        <input id="password" name="password" type="password" required="" class="appearance-none block w-full px-3 py-2 border border-blue-600 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-600 sm:text-sm sm:leading-5" placeholder="Password">
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <div class="mt-1 rounded-md shadow-sm">
+                        <input id="password_confirmation" name="password_confirmation" type="password" required="" class="appearance-none block w-full px-3 py-2 border border-blue-600 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-600 sm:text-sm sm:leading-5" placeholder="Retype password">
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <span class="block w-full rounded-md shadow-sm">
+                        <button type="submit" class="w-full flex justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white hover:bg-blue-500 focus:border-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-700">
+                            Create account
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <p class="mt-4 text-sm leading-5 sm:mx-auto sm:w-full sm:max-w-md pl-32">
+            Already a member?
+            <a href="C:\Users\bryce\Documents\GitHub\SpatialBlend-T31-CS425\dist\signup.html"
+                class="text-blue-600 hover:text-blue-800 focus:outline-none hover:underline">
+                Sign in.
+            </a>
+        </p>
+    </div>
+</div>
+<footer class="mt-auto">
+    <div class="w-full mx-auto p-4 md:py-8">
         <div class="sm:flex sm:items-center sm:justify-between">
-          <a href="#" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-            <img src="C:\Users\bryce\Desktop\tailwindstart\Img\spatialBlendLogo.jpg" class="h-8"
-              alt="Spatial Blend Logo" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Spatial Blend</span>
-          </a>
-          <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-            <li>
-              <a href="aboutUs.html" class="hover:underline me-4 md:me-6">About</a>
-            </li>
-            <li>
-              <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
-            </li>
-            <li>
-              <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-            </li>
-            <li>
-              <a href="#" class="hover:underline">Contact</a>
-            </li>
-          </ul>
+            <a href="#" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                <img src="C:\Users\bryce\Desktop\tailwindstart\Img\spatialBlendLogo.jpg" class="h-8"
+                    alt="Spatial Blend Logo" />
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Spatial
+                    Blend</span>
+            </a>
+            <ul
+                class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                <li>
+                    <a href="aboutUs.html" class="hover:underline me-4 md:me-6">About</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline">Contact</a>
+                </li>
+            </ul>
         </div>
         <hr class="my-6 border-gray-200 mx-auto dark:border-gray-700 lg:my-8" />
         <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="#"
-            class="hover:underline">SpatialBlend™</a>. All Rights Reserved.</span>
-      </div>
-    </footer>
-  </div>
-  <script>
+                class="hover:underline">SpatialBlend™</a>. All Rights Reserved.</span>
+    </div>
+</footer>
+</div>
+<script>
     let dropdownContainer = document.getElementById('dropdown-container');
     let dropdownMenu = document.getElementById('dropdown-menu');
 
     dropdownContainer.addEventListener('mouseenter', function () {
-      dropdownMenu.classList.remove('hidden');
+        dropdownMenu.classList.remove('hidden');
     });
 
     dropdownContainer.addEventListener('mouseleave', function () {
-      dropdownMenu.classList.add('hidden');
+        dropdownMenu.classList.add('hidden');
     });
-  </script>
+</script>
 </body>
 
+</html>
+</body>
 </html>
