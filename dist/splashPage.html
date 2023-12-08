@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Splash page</title>
+  <link href="output.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <!-- Navigation -->
+  <div class="flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="splashpage.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <svg class="h-10 w-10" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 315.223 315.223" xml:space="preserve">
+        <g>
+          <g>
+            <polygon style="fill:#005FAD;"
+              points="304.108,230.643 304.108,218.858 11.114,218.858 11.114,230.643 157.611,315.223 		" />
+            <polygon style="fill:#0071CE;" points="304.108,218.858 157.611,134.278 11.114,218.858 157.611,303.438 		" />
+          </g>
+          <g>
+            <polygon style="fill:#BF534F;"
+              points="304.108,163.504 304.108,151.719 11.114,151.719 11.114,163.504 157.611,248.083 		" />
+            <polygon style="fill:#FF6D68;" points="304.108,151.719 157.611,67.139 11.114,151.719 157.611,236.299 		" />
+          </g>
+          <g>
+            <polygon style="fill:#E0B03B;"
+              points="304.108,96.365 304.108,84.58 11.114,84.58 11.114,96.365 157.611,180.944 		" />
+            <polygon style="fill:#FFC843;" points="304.108,84.58 157.611,0 11.114,84.58 157.611,169.159 		" />
+          </g>
+        </g>
+      </svg>
+      <span class="self-center text-2xl font-bold whitespace-nowrap dark:text-black">SpatialBlend</span>
+    </a>
+    <div class="space-x-8 flex justify-right text-gray-600">
+      <div id="dropdown-container" class="group z-40 relative dropdown inline-block">
+
+        <button onclick="" href="#" class="hover:text-blue-600">Tools
+
+          <svg class="w-2 h-2 ml-8 cursor-pointer" fill="#000000" height="800px" width="800px" version="1.1"
+            id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 330 330" xml:space="preserve">
+            <path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
+	c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
+	s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z" />
+          </svg>
+        </button>
+        <div id="dropdown-menu" class="group-hover:block absolute bg-white shadow-lg w-24 hidden">
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool
+            1</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool
+            2</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool
+            3</a>
+        </div>
+
+      </div>
+      <a href="imageCombine.html" class="hover:text-blue-600">Blend</a>
+      <a href="imageEditor.html" class="hover:text-blue-600">Edit</a>
+      <a href="#" class="hover:text-blue-600">Examples</a>
+      <a href="aboutUs.html" class="hover:text-blue-600">About Us</a>
+      <div class="space-x-2">
+        <a href="login.html"
+          class="pt-1 pb-1 px-2.5 text-blue-600 hover:text-blue-800 font-medium rounded-lg text-sm border-solid border-blue-700">Login</a>
+        <a href="signup.html"
+          class="pt-1 pb-1 px-2.5 text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm">Sign
+          up</a>
+      </div>
+    </div>
+  </div>
+  <hr class="h-px border-0 dark:bg-gray-700 opacity-50">
+
+  <!-- Hero section -->
+  <section
+    class="pt-24 md:mt-0 md:h-screen flex flex-col justify-center text-center md:text-left md:flex-row md:justify-between md:items-center lg:px-48 md:px-12 px-4 bg-secondary">
+    <div class="md:flex-1 md:mr-10">
+      <h1 class="font-pt-serif text-5xl font-bold mb-7">
+        We make image processing
+        <span class="bg-underline1 bg-left-bottom bg-no-repeat pb-2 bg-100%">
+          easy and enjoyable.
+        </span>
+      </h1>
+      <p class="font-pt-serif font-normal mb-7">
+        All the tools you need to create magical illusions and edit your
+        images, now in one place.
+      </p>
+      <div class="font-montserrat">
+        <button>
+          <a href="imageCombine.html"
+            class="bg-blue-600 hover:bg-blue-700 px-6 py-4 rounded-lg border-2 border-black border-solid text-white mr-2 mb-2 transition ease-linear delay-100">
+            Blend Images
+          </a>
+        </button>
+        <button
+          class="px-6 py-4 border-2 border-black border-solid rounded-lg hover:bg-gray-200 transition ease-linear delay-100 sm:mt-6">
+          Explore Other Tools
+        </button>
+      </div>
+    </div>
+    <div class="flex justify-around md:block mt-8 md:mt-0 md:flex-1">
+      <svg width="800px" height="800px" viewBox="0 0 1024 1024" class="icon" version="1.1"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M242 280.3c-12.9 0-19.2-10.1-23.8-17.4-4.3-6.9-6.5-9.9-
+        10.2-9.9s-5.9 3-10.2 9.9c-4.6 7.3-10.9 17.4-23.8 17.4s-19.2-10.1-23.8-17.4c-4.3-6.9-6.5-9.9-10.2-9.9s-5.9 3-10.2 9.9c-4.6 7.3-10.9 17.4-23.8 17.4s-19.2-10.1-23.8-17.4C77.9 256 75.7 253 72 
+        253c-4.4 0-8-3.6-8-8s3.6-8 8-8c12.9 0 19.2 10.1 23.8 17.4 4.3 6.9 6.5 9.9 10.2 9.9s5.9-3 10.2-9.9C120.7 247 127 237 140 237s19.2 10.1 23.8 17.4c4.3 6.9 6.5 9.9 10.2 9.9 3.7 0 5.9-3 10.2-9.9
+        C188.8 247 195 237 208 237s19.2 10.1 23.8 17.4c4.3 6.9 6.5 9.9 10.2 9.9 4.4 0 8 3.6 8 8s-3.6 8-8 8zM263.9 230.3c-13.8 0-20.7-9.8-25.7-17-5.1-7.3-7.7-10.2-12.7-10.2s-7.5 3-12.7 10.2c-5.1 7.2-12 17-25.7 17-13.8 0-20.7-9.8-25.7-17-5.1-7.3-7.7-10.2-12.7-10.2s-7.5 3-12.7 10.2c-5.1 7.2-12 17-25.7 17s-20.7-9.8-25.7-17c-5.1-7.3-7.7-10.2-12.7-10.2-4.4 0-8-3.6-8-8s3.6-8 8-8c13.8 0 20.7 9.8 25.7 17 5.1 7.3 7.7 10.2 12.7 10.2s7.5-3 12.7-10.2c5.1-7.2 12-17 25.7-17s20.7 9.8 25.7 17c5.1 7.3 7.7 10.2 12.7 10.2 5 0 7.5-3 12.7-10.2 5.1-7.2 12-17 25.7-17s20.7 9.8 25.7 17c5.1 7.3 7.7 10.2 12.7 10.2 4.4 0 8 3.6 8 8s-3.6 8-8 8z"
+          fill="#9A2D2F" />
+        <path d="M352 104.7m-32 0a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z" fill="#FFEB4D" />
+        <path
+          d="M352 144.7c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40z m0-64c-13.2 0-24 10.8-24 24s10.8 24 24 24 24-10.8 24-24-10.8-24-24-24z"
+          fill="#9A2D2F" />
+        <path d="M368.9 234.7h320v204h-320z" fill="#C2F2FF" />
+        <path d="M547.4 287.2L410.2 438.7h246.1z" fill="#FFACC2" />
+        <path d="M623.9 484.7h-255l150.4-166z" fill="#DAE5FF" />
+        <path d="M590.1 347.1l-40.2-9.9-52 5.2 49.5-54.6z" fill="#FFFFFF" />
+        <path d="M477.8 364.5l22.8 16.7 18.6-14 41.3 16.9-41.2-65.3z" fill="#FFFFFF" />
+        <path
+          d="M439.9 311.7c-13.2 0-24-10.8-24-24s10.8-24 24-24 24 10.8 24 24-10.7 24-24 24z m0-32c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z"
+          fill="#9A2D2F" />
+        <path d="M439.9 287.7m-16 0a16 16 0 1 0 32 0 16 16 0 1 0-32 0Z" fill="#FFEB4D" />
+        <path
+          d="M800.9 950.7h-576c-17.6 0-32-14.4-32-32v-448c0-17.6 14.4-32 32-32h576c17.6 0 32 14.4 32 32v448c0 17.6-14.4 32-32 32z"
+          fill="#FFACC2" />
+        <path d="M800.9 950.7h-576c-17.6 0-32-14.4-32-32v-96h640v96c0 17.6-14.4 32-32 32z" fill="#FFEB4D" />
+        <path d="M512.9 695.7m-193 0a193 193 0 1 0 386 0 193 193 0 1 0-386 0Z" fill="#DAE5FF" />
+        <path d="M512.9 695.7m-144 0a144 144 0 1 0 288 0 144 144 0 1 0-288 0Z" fill="#FFFFFF" />
+        <path d="M311.9 539.7h-58c-8.8 0-16-7.2-16-16s7.2-16 16-16h58c8.8 0 16 7.2 16 16s-7.2 16-16 16z"
+          fill="#FFFFFF" />
+        <path d="M516.3 695.5m-48 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0Z" fill="#FFC0F0" />
+        <path
+          d="M512.9 847.7c83.8 0 152-68.2 152-152s-68.2-152-152-152-152 68.2-152 152 68.2 152 152 152z m0-288c75 0 136 61 136 136s-61 136-136 136-136-61-136-136 61-136 136-136zM311.9 499.7h-58c-13.2 0-24 10.8-24 24s10.8 24 24 24h58c13.2 0 24-10.8 24-24 0-13.3-10.7-24-24-24z m0 32h-58c-4.4 0-8-3.6-8-8s3.6-8 8-8h58c4.4 0 8 3.6 8 8s-3.6 8-8 8z"
+          fill="#9A2D2F" />
+        <path
+          d="M516.3 751.5c30.9 0 56-25.1 56-56s-25.1-56-56-56-56 25.1-56 56 25.1 56 56 56z m0-96c22.1 0 40 17.9 40 40s-17.9 40-40 40-40-17.9-40-40 17.9-40 40-40z"
+          fill="#9A2D2F" />
+        <path
+          d="M951 686.3c-5 0-7.5-3-12.7-10.2-5.1-7.2-12-17-25.7-17s-20.7 9.8-25.7 17c-5.1 7.3-7.7 10.2-12.7 10.2-5 0-7.5-3-12.7-10.2-4.4-6.2-10.2-14.5-20.6-16.5v-33c2.3 1.6 4.5 4.4 7.5 8.7 5.1 7.2 12 17 25.7 17s20.7-9.8 25.7-17c5.1-7.3 7.7-10.2 12.7-10.2s7.5 3 12.7 10.2c5.1 7.2 12 17 25.7 17 4.4 0 8-3.6 8-8s-3.6-8-8-8c-5 0-7.5-3-12.7-10.2-5.1-7.2-12-17-25.7-17s-20.7 9.8-25.7 17c-5.1 7.3-7.7 10.2-12.7 10.2-5 0-7.5-3-12.7-10.2-4.4-6.2-10.2-14.5-20.6-16.5V470.7c0-22.1-17.9-40-40-40h-104v-196c0-4.4-3.6-8-8-8h-320c-4.4 0-8 3.6-8 8v196h-136c-22.1 0-40 17.9-40 40v448c0 9 3 17.3 8 24h-91.6c-4.4 0-8 3.6-8 8s3.6 8 8 8h824c4.4 0 8-3.6 8-8s-3.6-8-8-8h-92.4c5-6.7 8-15 8-24V676.5c2.3 1.6 4.5 4.4 7.5 8.7 5.1 7.2 12 17 25.7 17s20.7-9.8 25.7-17c5.1-7.3 7.7-10.2 12.7-10.2s7.5 3 12.7 10.2c5.1 7.2 12 17 25.7 17 4.4 0 8-3.6 8-8s-3.4-7.9-7.8-7.9zM376.9 242.7h304v188h-20.6L553.9 282.5c-1.4-2-3.6-3.2-6-3.3-2.4-0.1-4.8 0.8-6.4 2.6L406.6 430.7h-29.7v-188z m162.4 122.7l1.2 1.8-18.2-7.4c-2.6-1.1-5.6-0.7-7.8 1l-13.8 10.4-10.8-7.9 12-13.3 16.4-18.1 9.8 15.5 11.2 18z m-10-45.8l17.4-19.2 24.2 33.6-19.1-4.7c-0.6-0.2-1.3-0.2-1.9-0.2h-0.8l-12.9 1.3-6.9-10.8z m-33.4 68c2.8 2.1 6.7 2.1 9.5-0.1l14.9-11.3 34.7 14.2 25.3 40.2H428.6l50.2-55.5 17.1 12.5z m71.5-7.6c0-0.1-0.1-0.2-0.1-0.2l-14.7-23.2-6.9-11 3.6-0.4 36.4 9 54.9 76.4h-41.3L567.4 380z m257.5 538.7c0 13.2-10.7 24-24 24h-576c-13.2 0-24-10.8-24-24v-88h163.2c36.8 40.5 89.9 66 148.8 66s112-25.5 148.8-66h163.2v88z m-497-223c0-102 83-185 185-185s185 83 185 185-83 185-185 185-185-83-185-185z m497 119H674.8c24.6-33.3 39.1-74.5 39.1-119 0-110.8-90.2-201-201-201s-201 90.2-201 201c0 44.5 14.5 85.7 39.1 119H200.9v-344c0-13.2 10.8-24 24-24h576c13.2 0 24 10.8 24 24v344z"
+          fill="#9A2D2F" />
+        <path
+          d="M200.9 565.1c5.8-1.4 10.9-3.1 15-5.4 11.2-6.3 16.7-13.3 19.8-20.4-3.6-4.2-5.8-9.7-5.8-15.6 0-12.1 9.1-22.2 20.8-23.8 8.4-7.9 24.1-14.3 55.2-18 58.1-6.9 69.4-24.8 70.8-35.3H224.9c-13.2 0-24 10.8-24 24v94.5z"
+          fill="#FFFFFF" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="text-black sectionSize">
+    <div class="mb-10">
+      <h2 class="bg-underline2 bg-100% flex items-center justify-center text-2xl">How it works</h2>
+    </div>
+    <div class="flex flex-col md:flex-row">
+      <div class="flex-1 mx-8 flex flex-col items-center my-4">
+        <div
+          class="border-2 border-blue-600 rounded-full bg-secondary text-black h-12 w-12 flex justify-center items-center mb-3">
+          1
+        </div>
+        <h3 class="font-montserrat font-medium text-xl mb-2">Blend</h3>
+        <p class="text-center font-montserrat">
+          Blend two images to create illusions by distance, shape, and color.
+        </p>
+      </div>
+      <div class="flex-1 mx-8 flex flex-col items-center my-4">
+        <div class="border-2 border-blue-600 rounded-full text-black h-12 w-12 flex justify-center items-center mb-3">
+          2
+        </div>
+        <h3 class="font-montserrat font-medium text-xl mb-2">Edit</h3>
+        <p class="text-center font-montserrat">
+          Use our image editor to edit images before or after blending.
+        </p>
+      </div>
+      <div class="flex-1 mx-8 flex flex-col items-center my-4">
+        <div
+          class="border-2 rounded-full border-blue-600 bg-secondary text-black h-12 w-12 flex justify-center items-center mb-3">
+          3
+        </div>
+        <h3 class="font-montserrat font-medium text-xl mb-2">Create</h3>
+        <p class="text-center font-montserrat">
+          Become a creative by displaying your talent with our tech!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mt-auto">
+    <div class="w-full mx-auto p-4 md:py-8">
+      <div class="sm:flex sm:items-center sm:justify-between">
+        <a href="#" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+          <svg class="h-8 w-8" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 315.223 315.223" xml:space="preserve">
+            <g>
+              <g>
+                <polygon style="fill:#005FAD;"
+                  points="304.108,230.643 304.108,218.858 11.114,218.858 11.114,230.643 157.611,315.223 		" />
+                <polygon style="fill:#0071CE;"
+                  points="304.108,218.858 157.611,134.278 11.114,218.858 157.611,303.438 		" />
+              </g>
+              <g>
+                <polygon style="fill:#BF534F;"
+                  points="304.108,163.504 304.108,151.719 11.114,151.719 11.114,163.504 157.611,248.083 		" />
+                <polygon style="fill:#FF6D68;"
+                  points="304.108,151.719 157.611,67.139 11.114,151.719 157.611,236.299 		" />
+              </g>
+              <g>
+                <polygon style="fill:#E0B03B;"
+                  points="304.108,96.365 304.108,84.58 11.114,84.58 11.114,96.365 157.611,180.944 		" />
+                <polygon style="fill:#FFC843;" points="304.108,84.58 157.611,0 11.114,84.58 157.611,169.159 		" />
+              </g>
+            </g>
+          </svg>
+          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Spatial
+            Blend</span>
+        </a>
+        <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+          <li>
+            <a href="aboutUs.html" class="hover:underline me-4 md:me-6">About</a>
+          </li>
+          <li>
+            <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+          </li>
+          <li>
+            <a href="#" class="hover:underline">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <hr class="my-6 border-gray-200 mx-auto dark:border-gray-700 lg:my-8" />
+      <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="#"
+          class="hover:underline">SpatialBlend™</a>. All Rights Reserved.</span>
+    </div>
+  </footer>
+</body>
+
+</html>
