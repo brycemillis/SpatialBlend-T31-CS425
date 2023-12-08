@@ -1,8 +1,7 @@
-"""
-URL configuration for cfehome project.
+"""cfehome URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
+    https://docs.djangoproject.com/en/4.1/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -18,11 +17,15 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path
 
+from . import views
+
 urlpatterns = [
+    path('', views.home_view, name='home'),
     path('admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:
-    # Do not do this in prod
+    # do not do this in prod
     from django.conf.urls.static import static
+    # Try Django
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
