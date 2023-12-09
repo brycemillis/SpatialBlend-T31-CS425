@@ -1,5 +1,6 @@
 from PIL import Image
 import numpy as np
+import os
 
 def resize_to_smallest(image1, image2):
     # Finds smallest dimensions between two images
@@ -12,7 +13,7 @@ def resize_to_smallest(image1, image2):
 
     return image1, image2
 
-def low_pass_filter(image, cutoff_frequency=20):
+def low_pass_filter(image, cutoff_frequency=20):     
     # Fourier transform
     f_transform = np.fft.fft2(image)
     f_transform_shifted = np.fft.fftshift(f_transform)
@@ -53,9 +54,17 @@ def high_pass_filter(image, cutoff_frequency=20):
     return image_back
 
 def create_hybrid_image(image_file1, image_file2, output_file, low_pass_cutoff, high_pass_cutoff):
-    # Loads images and convert to grayscale
-    image1 = Image.open(image_file1).convert('L')
-    image2 = Image.open(image_file2).convert('L')
+    # Defines image bank directory
+    image_bank_dir = 'image_bank'
+
+    # Checks if results directory exists, if not create it
+    results_dir = 'results'
+    if not os.path.exists(results_dir):
+        os.makedirs(results_dir)
+
+    # Loads images from image bank and converts to grayscale
+    image1 = Image.open(os.path.join(image_bank_dir, image_file1)).convert('L')
+    image2 = Image.open(os.path.join(image_bank_dir, image_file2)).convert('L')
 
     # Resizes images to smallest common size
     image1, image2 = resize_to_smallest(image1, image2)
@@ -68,9 +77,9 @@ def create_hybrid_image(image_file1, image_file2, output_file, low_pass_cutoff, 
     low_pass_image = low_pass_filter(image1_array, low_pass_cutoff)
     high_pass_image = high_pass_filter(image2_array, high_pass_cutoff)
 
-    # Saves low pass and high pass images
-    Image.fromarray(low_pass_image.astype(np.uint8)).convert("RGB").save('low_pass_image.png')
-    Image.fromarray(high_pass_image.astype(np.uint8)).convert("RGB").save('high_pass_image.png')
+    # Saves low pass and high pass images in results directory
+    Image.fromarray(low_pass_image.astype(np.uint8)).convert("RGB").save(os.path.join(results_dir, 'low_pass_image.png'))
+    Image.fromarray(high_pass_image.astype(np.uint8)).convert("RGB").save(os.path.join(results_dir, 'high_pass_image.png'))
 
     # Combines images
     hybrid_image = low_pass_image + high_pass_image - np.mean(high_pass_image)
@@ -79,7 +88,7 @@ def create_hybrid_image(image_file1, image_file2, output_file, low_pass_cutoff, 
     hybrid_image = np.clip(hybrid_image, 0, 255)
     hybrid_image = Image.fromarray(hybrid_image.astype(np.uint8))
     hybrid_image = hybrid_image.convert("RGB")
-    hybrid_image.save(output_file)
+    hybrid_image.save(os.path.join(results_dir, output_file))
 
 # Example usage
 create_hybrid_image('shrek.jpg', 'harry.jpg', 'hybrid_image.png', low_pass_cutoff=20, high_pass_cutoff=40)
