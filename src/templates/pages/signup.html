@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-
-
 {% block content %}
+
 <body>
     <div class="flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="{% url 'home' %}0" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+        <a href="{% url 'home' %}" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <svg class="h-10 w-10" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 315.223 315.223" xml:space="preserve">
                 <g>
                     <g>
@@ -56,14 +56,14 @@
                 </div>
 
             </div>
-            <a href="imageCombine.html" class="hover:text-blue-600">Blend</a>
-            <a href="imageEditor.html" class="hover:text-blue-600">Edit</a>
+            <a href="/imageCombine/" class="hover:text-blue-600">Blend</a>
+            <a href="/imageEditor/" class="hover:text-blue-600">Edit</a>
             <a href="#" class="hover:text-blue-600">Examples</a>
-            <a href="aboutUs.html" class="hover:text-blue-600">About Us</a>
+            <a href="/aboutUs/" class="hover:text-blue-600">About Us</a>
             <div class="space-x-2">
-                <a href="login.html"
+                <a href="/login/"
                     class="pt-1 pb-1 px-2.5 text-blue-600 hover:text-blue-800 font-medium rounded-lg text-sm border-solid border-blue-700">Login</a>
-                <a href="signup.html"
+                <a href="/signup/"
                     class="pt-1 pb-1 px-2.5 text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm">Sign
                     up</a>
             </div>
@@ -181,7 +181,7 @@
                 <ul
                     class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                     <li>
-                        <a href="aboutUs.html" class="hover:underline me-4 md:me-6">About</a>
+                        <a href="/aboutUs/" class="hover:underline me-4 md:me-6">About</a>
                     </li>
                     <li>
                         <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
@@ -212,9 +212,6 @@
             dropdownMenu.classList.add('hidden');
         });
     </script>
-</body>
-
-</html>
 </body>
 
 {% endblock %}
