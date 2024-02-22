@@ -12,10 +12,12 @@ Below is a list of the necessary software components used in the application. DO
 - Django: Version 4.1
 - Tailwind CSS: Version v3.4.1
 - PostgreSQL: Version 16.2  
+  
 
 ### Setup Instructions
 
 To set up the project environment and run the application, follow these steps:  
+  
 
 **Prerequisites**
 
@@ -25,6 +27,7 @@ If you do not already have the following installed, please install them from the
 2. Python 3.11.7
 3. Node.js 20.11.0 LTS
 4. PostgreSQL 16.2  (Skip stack builder)  
+  
 
 Clone the repository from Github and open it in VS Code. Open a terminal and navigate to the main project directory.
 
@@ -51,6 +54,7 @@ Clone the repository from Github and open it in VS Code. Open a terminal and nav
 ```npm install tailwindcss@v3.4.1```  
 
 **Next, navigate to the 'src' directory:**
+  
 
 1. ```cd src```
 
@@ -65,6 +69,7 @@ Clone the repository from Github and open it in VS Code. Open a terminal and nav
 
 5. Run the Development Server:
    ```python manage.py runserver```  
+     
 
 ### Troubleshooting
 
