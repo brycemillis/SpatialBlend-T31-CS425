@@ -10,7 +10,7 @@ Below is a list of the necessary software components used in the application. DO
 - Node.js: Version 20.11.0 LTS
 - Visual Studio Code (VS Code)
 - Django: Version 4.1
-- Tailwind CSS: Version 3.41
+- Tailwind CSS: Version v3.4.1
 - PostgreSQL: Version 16.2
 
 ### Setup Instructions
@@ -48,19 +48,22 @@ Clone the repository from Github and open it in VS Code. Open a terminal and nav
    ```pip install psycopg2```
 
 5.  Install Tailwind CSS:
-``` npm install tailwindcss@3.41 ```
+```npm install tailwindcss@v3.4.1```
 
 **Next, navigate to the 'src' directory:**
 
 1. ```cd src```
 
-2. Run ``` npm run dev``` in the terminal then exit it using Ctrl+C.
+2. Run ```npm run dev``` in the terminal then exit it using Ctrl+C.
 
 3. Collect Static Files:
    ```python manage.py collectstatic```
    When prompted, type 'yes' to confirm.
 
-4. Run the Development Server:
+4. Migrate files:
+   ```python manage.py migrate```
+
+5. Run the Development Server:
    ```python manage.py runserver```
 
 ### Troubleshooting
