@@ -1,70 +1,8 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 
 {% block content %}
 
 <body>
-    <nav class="flex flex-wrap fixed top-0 z-50 items-center justify-between w-full p-4">
-        <a href="{% url 'home' %}" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <svg class="h-10 w-10" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-            viewBox="0 0 315.223 315.223" xml:space="preserve">
-       <g>
-           <g>
-               <polygon style="fill:#005FAD;" points="304.108,230.643 304.108,218.858 11.114,218.858 11.114,230.643 157.611,315.223 		"/>
-               <polygon style="fill:#0071CE;" points="304.108,218.858 157.611,134.278 11.114,218.858 157.611,303.438 		"/>
-           </g>
-           <g>
-               <polygon style="fill:#BF534F;" points="304.108,163.504 304.108,151.719 11.114,151.719 11.114,163.504 157.611,248.083 		"/>
-               <polygon style="fill:#FF6D68;" points="304.108,151.719 157.611,67.139 11.114,151.719 157.611,236.299 		"/>
-           </g>
-           <g>
-               <polygon style="fill:#E0B03B;" points="304.108,96.365 304.108,84.58 11.114,84.58 11.114,96.365 157.611,180.944 		"/>
-               <polygon style="fill:#FFC843;" points="304.108,84.58 157.611,0 11.114,84.58 157.611,169.159 		"/>
-           </g>
-       </g>
-       </svg>
-            <span class="self-center text-2xl font-bold whitespace-nowrap dark:text-black">SpatialBlend</span>
-        </a>
-        <div class="space-x-8 flex justify-right text-gray-600">
-            <div id="dropdown-container" class="group z-40 dropdown inline-block">
-
-                <button onclick="" href="#" class="hover:text-blue-600">Tools
-                    <svg class="w-2 h-2 ml-8 cursor-pointer" fill="#000000" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-	 viewBox="0 0 330 330" xml:space="preserve">
-<path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
-	c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
-	s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"/>
-</svg>
-                    
-                </button>
-                <div id="dropdown-menu" class="group-hover:block absolute bg-white shadow-lg w-24 hidden">
-                    <a href="#"
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool
-                        1</a>
-                    <a href="#"
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool
-                        2</a>
-                    <a href="#"
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool
-                        3</a>
-                </div>
-
-            </div>
-            <a href="/imageCombine/" class="hover:text-blue-600">Blend</a>
-            <a href="/imageEditor/" class="hover:text-blue-600">Edit</a>
-            <a href="#" class="hover:text-blue-600">Examples</a>
-            <a href="/aboutUs/" class="hover:text-blue-600">About Us</a>
-            <div class="space-x-2">
-                <a href="/login/"
-                    class="pt-1 pb-1 px-2.5 text-blue-600 hover:text-blue-800 font-medium rounded-lg text-sm border-solid border-blue-700">Login</a>
-                <a href="/signup/"
-                    class="pt-1 pb-1 px-2.5 text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm">Sign
-                    up</a>
-            </div>
-        
-        </div>
-    
-    </nav>
-        <div class="pt-24"></div>
     <div class="mb-4 text-center">
     <h1 class="font-bold text-5xl">Image Editor</h1>
     </div>
@@ -119,65 +57,7 @@
     </div>
 
     </div>
-
-
-
-
-
     </div>
-    <!-- Footer begins-->
-    <footer class="mt-auto">
-        <div class="w-full mx-auto p-4 md:py-8">
-            <div class="sm:flex sm:items-center sm:justify-between">
-                <a href="#" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                    <svg class="h-8 w-8" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 315.223 315.223" xml:space="preserve">
-                        <g>
-                            <g>
-                                <polygon style="fill:#005FAD;"
-                                    points="304.108,230.643 304.108,218.858 11.114,218.858 11.114,230.643 157.611,315.223 		" />
-                                <polygon style="fill:#0071CE;"
-                                    points="304.108,218.858 157.611,134.278 11.114,218.858 157.611,303.438 		" />
-                            </g>
-                            <g>
-                                <polygon style="fill:#BF534F;"
-                                    points="304.108,163.504 304.108,151.719 11.114,151.719 11.114,163.504 157.611,248.083 		" />
-                                <polygon style="fill:#FF6D68;"
-                                    points="304.108,151.719 157.611,67.139 11.114,151.719 157.611,236.299 		" />
-                            </g>
-                            <g>
-                                <polygon style="fill:#E0B03B;"
-                                    points="304.108,96.365 304.108,84.58 11.114,84.58 11.114,96.365 157.611,180.944 		" />
-                                <polygon style="fill:#FFC843;"
-                                    points="304.108,84.58 157.611,0 11.114,84.58 157.611,169.159 		" />
-                            </g>
-                        </g>
-                    </svg>
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Spatial
-                        Blend</span>
-                </a>
-                <ul
-                    class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-                    <li>
-                        <a href="/aboutUs/" class="hover:underline me-4 md:me-6">About</a>
-                    </li>
-                    <li>
-                        <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
-                    </li>
-                    <li>
-                        <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-                    </li>
-                    <li>
-                        <a href="#" class="hover:underline">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <hr class="my-6 border-gray-200 mx-auto dark:border-gray-700 lg:my-8" />
-            <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="#"
-                    class="hover:underline">SpatialBlend™</a>. All Rights Reserved.</span>
-        </div>
-    </footer>
-
     <script>
         let dropdownContainer = document.getElementById('dropdown-container');
         let dropdownMenu = document.getElementById('dropdown-menu');

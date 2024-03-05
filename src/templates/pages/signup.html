@@ -1,76 +1,7 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 
 {% block content %}
-
 <body>
-    <div class="flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="{% url 'home' %}" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <svg class="h-10 w-10" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 315.223 315.223" xml:space="preserve">
-                <g>
-                    <g>
-                        <polygon style="fill:#005FAD;"
-                            points="304.108,230.643 304.108,218.858 11.114,218.858 11.114,230.643 157.611,315.223 		" />
-                        <polygon style="fill:#0071CE;"
-                            points="304.108,218.858 157.611,134.278 11.114,218.858 157.611,303.438 		" />
-                    </g>
-                    <g>
-                        <polygon style="fill:#BF534F;"
-                            points="304.108,163.504 304.108,151.719 11.114,151.719 11.114,163.504 157.611,248.083 		" />
-                        <polygon style="fill:#FF6D68;"
-                            points="304.108,151.719 157.611,67.139 11.114,151.719 157.611,236.299 		" />
-                    </g>
-                    <g>
-                        <polygon style="fill:#E0B03B;"
-                            points="304.108,96.365 304.108,84.58 11.114,84.58 11.114,96.365 157.611,180.944 		" />
-                        <polygon style="fill:#FFC843;"
-                            points="304.108,84.58 157.611,0 11.114,84.58 157.611,169.159 		" />
-                    </g>
-                </g>
-            </svg>
-            <span class="self-center text-2xl font-bold whitespace-nowrap dark:text-black">SpatialBlend</span>
-        </a>
-        <div class="space-x-8 flex justify-right text-gray-600">
-            <div id="dropdown-container" class="group z-40 relative dropdown inline-block">
-
-                <button onclick="" href="#" class="hover:text-blue-600">Tools
-
-                    <svg class="w-2 h-2 ml-8 cursor-pointer" fill="#000000" height="800px" width="800px" version="1.1"
-                        id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        viewBox="0 0 330 330" xml:space="preserve">
-                        <path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
-	c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
-	s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z" />
-                    </svg>
-                </button>
-                <div id="dropdown-menu" class="group-hover:block absolute bg-white shadow-lg w-24 hidden">
-                    <a href="#"
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool
-                        1</a>
-                    <a href="#"
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool
-                        2</a>
-                    <a href="#"
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool
-                        3</a>
-                </div>
-
-            </div>
-            <a href="/imageCombine/" class="hover:text-blue-600">Blend</a>
-            <a href="/imageEditor/" class="hover:text-blue-600">Edit</a>
-            <a href="#" class="hover:text-blue-600">Examples</a>
-            <a href="/aboutUs/" class="hover:text-blue-600">About Us</a>
-            <div class="space-x-2">
-                <a href="/login/"
-                    class="pt-1 pb-1 px-2.5 text-blue-600 hover:text-blue-800 font-medium rounded-lg text-sm border-solid border-blue-700">Login</a>
-                <a href="/signup/"
-                    class="pt-1 pb-1 px-2.5 text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm">Sign
-                    up</a>
-            </div>
-        </div>
-    </div>
-    <hr class="h-px border-0 dark:bg-gray-700 opacity-50">
-
     <div class="flex min-h-screen flex-col justify-center bg-gray-50 py-12 sm:px-6 lg:px-8">
         <div class="mx-auto w-full max-w-md sm:mx-auto">
             <img class="mx-auto h-16 w-auto" src="https://www.svgrepo.com/show/416654/pencil-pen-write.svg"
@@ -83,50 +14,71 @@
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
             <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                 <form method="POST" action="#">
-                    <div>
-                        <div class="mt-1 relative shadow-sm rounded-md">
-                            <input id="firstname" name="firstname" type="text" required="" value=""
-                                class=" appearance-none block w-full px-3 py-2 border border-blue-600 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-600 sm:text-sm sm:leading-5"
-                                placeholder="First name">
-                        </div>
-                    </div>
+                    {% csrf_token %}
+                    <!-- First Name -->
                     <div class="mt-6">
                         <div class="mt-1 relative shadow-sm rounded-md">
-                            <input id="lastname" name="name" type="text" required="" value=""
+                            <input id="first_name" name="first_name" type="text" required="" value="{{ form.first_name.value|default_if_none:'' }}"
+                                class="appearance-none block w-full px-3 py-2 border border-blue-600 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-600 sm:text-sm sm:leading-5"
+                                placeholder="First name">
+                            {% if form.first_name.errors %}
+                                <p class="text-red-500 text-xs italic">{{ form.first_name.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <!-- Last Name -->
+                    <div class="mt-6">
+                        <div class="mt-1 relative shadow-sm rounded-md">
+                            <input id="last_name" name="last_name" type="text" required="" value="{{ form.last_name.value|default_if_none:'' }}"
                                 class="appearance-none block w-full px-3 py-2 border border-blue-600 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-600 sm:text-sm sm:leading-5"
                                 placeholder="Last name">
+                            {% if form.last_name.errors %}
+                                <p class="text-red-500 text-xs italic">{{ form.last_name.errors }}</p>
+                            {% endif %}
                         </div>
                     </div>
-
+                    <!-- Username -->
                     <div class="mt-6">
                         <div class="mt-1 flex rounded-md shadow-sm">
-                            <input id="username" name="username" type="text" required="" value=""
+                            <input id="username" name="username" type="text" required="" value="{{ form.username.value|default_if_none:'' }}"
                                 class="appearance-none block w-full px-3 py-2 border border-blue-600 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-600 sm:text-sm sm:leading-5"
                                 placeholder="Username">
+                            {% if form.username.errors %}
+                                <p class="text-red-500 text-xs italic">{{ form.username.errors }}</p>
+                            {% endif %}
                         </div>
                     </div>
-
+                    <!-- Email -->
                     <div class="mt-6">
                         <div class="mt-1 relative shadow-sm rounded-md">
-                            <input id="email" name="email" type="email" required="" value=""
+                            <input id="email" name="email" type="email" required="" value="{{ form.email.value|default_if_none:'' }}"
                                 class="appearance-none block w-full px-3 py-2 border border-blue-600 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-600 sm:text-sm sm:leading-5"
                                 placeholder="Email">
+                            {% if form.email.errors %}
+                                <p class="text-red-500 text-xs italic">{{ form.email.errors }}</p>
+                            {% endif %}
                         </div>
                     </div>
-
+                    <!-- Password -->
                     <div class="mt-6">
                         <div class="mt-1 rounded-md shadow-sm">
-                            <input id="password" name="password" type="password" required=""
+                            <input id="password1" name="password1" type="password" required=""
                                 class="appearance-none block w-full px-3 py-2 border border-blue-600 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-600 sm:text-sm sm:leading-5"
                                 placeholder="Password">
+                            {% if form.password1.errors %}
+                                <p class="text-red-500 text-xs italic">{{ form.password1.errors }}</p>
+                            {% endif %}
                         </div>
                     </div>
-
+                    <!-- Password Confirmation -->
                     <div class="mt-6">
                         <div class="mt-1 rounded-md shadow-sm">
-                            <input id="password_confirmation" name="password_confirmation" type="password" required=""
+                            <input id="password2" name="password2" type="password" required=""
                                 class="appearance-none block w-full px-3 py-2 border border-blue-600 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-600 sm:text-sm sm:leading-5"
                                 placeholder="Retype password">
+                            {% if form.password2.errors %}
+                                <p class="text-red-500 text-xs italic">{{ form.password2.errors }}</p>
+                            {% endif %}
                         </div>
                     </div>
 
@@ -142,63 +94,12 @@
             </div>
             <p class="mt-4 text-sm leading-5 sm:mx-auto sm:w-full sm:max-w-md pl-32">
                 Already a member?
-                <a href="login.html" class="text-blue-600 hover:text-blue-800 focus:outline-none hover:underline">
+                <a href="/login/" class="text-blue-600 hover:text-blue-800 focus:outline-none hover:underline">
                     Sign in.
                 </a>
             </p>
         </div>
     </div>
-    <footer class="mt-auto">
-        <div class="w-full mx-auto p-4 md:py-8">
-            <div class="sm:flex sm:items-center sm:justify-between">
-                <a href="#" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                    <svg class="h-8 w-8" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 315.223 315.223" xml:space="preserve">
-                        <g>
-                            <g>
-                                <polygon style="fill:#005FAD;"
-                                    points="304.108,230.643 304.108,218.858 11.114,218.858 11.114,230.643 157.611,315.223 		" />
-                                <polygon style="fill:#0071CE;"
-                                    points="304.108,218.858 157.611,134.278 11.114,218.858 157.611,303.438 		" />
-                            </g>
-                            <g>
-                                <polygon style="fill:#BF534F;"
-                                    points="304.108,163.504 304.108,151.719 11.114,151.719 11.114,163.504 157.611,248.083 		" />
-                                <polygon style="fill:#FF6D68;"
-                                    points="304.108,151.719 157.611,67.139 11.114,151.719 157.611,236.299 		" />
-                            </g>
-                            <g>
-                                <polygon style="fill:#E0B03B;"
-                                    points="304.108,96.365 304.108,84.58 11.114,84.58 11.114,96.365 157.611,180.944 		" />
-                                <polygon style="fill:#FFC843;"
-                                    points="304.108,84.58 157.611,0 11.114,84.58 157.611,169.159 		" />
-                            </g>
-                        </g>
-                    </svg>
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Spatial
-                        Blend</span>
-                </a>
-                <ul
-                    class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-                    <li>
-                        <a href="/aboutUs/" class="hover:underline me-4 md:me-6">About</a>
-                    </li>
-                    <li>
-                        <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
-                    </li>
-                    <li>
-                        <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-                    </li>
-                    <li>
-                        <a href="#" class="hover:underline">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <hr class="my-6 border-gray-200 mx-auto dark:border-gray-700 lg:my-8" />
-            <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="#"
-                    class="hover:underline">SpatialBlend™</a>. All Rights Reserved.</span>
-        </div>
-    </footer>
     </div>
     <script>
         let dropdownContainer = document.getElementById('dropdown-container');
