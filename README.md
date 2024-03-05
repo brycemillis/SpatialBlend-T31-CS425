@@ -70,6 +70,30 @@ Clone the repository from Github and open it in VS Code. Open a terminal and nav
 5. Run the Development Server:
    ```python manage.py runserver```  
      
+### Access to Admin Panel
+To access the admin panel, you must first create a superuser account. Follow these steps to create one:
+
+1. Ensure you are in the `src` project directory where the `manage.py` file is located.
+
+2. Open a terminal and activate your virtual environment if it's not already activated.
+
+3. Run the following command to create a superuser account:
+
+```python manage.py createsuperuser```
+
+4. When prompted, enter the following recommended credentials for demonstration purposes:
+- Username: `admin`
+- Email address: `admin@email.com`
+- Password: `adminpass123`
+- Password (again): `adminpass123`
+
+**Note:** For security reasons, it is recommended to change these credentials when deploying the application in a production environment.
+
+5. Once the superuser account has been created, you can access the admin panel by visiting the following URL:
+
+```http://localhost:8000/admin```
+
+By following these steps, you should now have access to the Django admin panel, where you can manage the application's data.
 
 ### Troubleshooting
 
