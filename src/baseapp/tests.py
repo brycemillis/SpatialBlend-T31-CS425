@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 # Create your tests here.
 class UserRegistrationTest(TestCase):
     def test_user_registration(self):
-        """Test that a user can register successfully with valid data."""
         self.assertEqual(User.objects.count(), 0)
         
         url = reverse('signup')
@@ -14,8 +13,8 @@ class UserRegistrationTest(TestCase):
             'email': 'newuser@example.com',
             'first_name': 'New',
             'last_name': 'User',
-            'password1': 'ComplexPassword!123',
-            'password2': 'ComplexPassword!123',
+            'password1': 'Testing!123',
+            'password2': 'Testing!123',
         }
         
         response = self.client.post(url, data)
@@ -33,7 +32,6 @@ class UserRegistrationTest(TestCase):
 
 class PageResponseTest(TestCase):
     def setUp(self):
-        # Create a test user
         self.user = User.objects.create_user(username='testuser', password='12345')
         self.user.save()
 
@@ -71,3 +69,9 @@ class PageResponseTest(TestCase):
         self.assertEqual(response.status_code, 302)
         response = self.client.get(reverse('login'))
         self.assertEqual(response.status_code, 200)
+
+# class ImageUploadTest(TestCase):
+#     def setUp(self):
+
+# class DownloadTest(TestCase):
+#     def setUp(self):
