@@ -1,5 +1,6 @@
 .DS_Store
 local-cdn/
+!/src/static/dist/
 
 # Logs
 logs
@@ -95,6 +96,9 @@ out
 .nuxt
 dist
 
+#
+!/src/static/dist/
+
 # Gatsby files
 .cache/
 # Comment in the public line in if your project uses Gatsby and not 
@@ -161,6 +165,9 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+
+#
+!/src/static/dist/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
