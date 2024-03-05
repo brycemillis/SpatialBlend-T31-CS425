@@ -1,4 +1,4 @@
-"""cfehome URL Configuration
+"""spatialblend URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -15,19 +15,12 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-from django.urls import path
-
-from . import views
+from django.urls import path, include
 
 urlpatterns = [
-    path('', views.home_view, name='home'),
-    path('aboutUs/', views.about_us_view, name='about_us'),
-    path('imageCombine/', views.image_combine_view, name='image_combine'),
-    path('imageEditor/', views.image_editor_view, name='image_editor'),
-    path('login/', views.login_view, name='login'),
-    path('recentBlends/', views.recent_blends_view, name='recent_blends'),
-    path('signup/', views.signup_view, name='signup'),
     path('admin/', admin.site.urls),
+    path('', include('baseapp.urls')),
+
 ]
 
 if settings.DEBUG:
