@@ -47,8 +47,11 @@ Clone the repository from Github and open it in VS Code. Open a terminal and nav
 3. Install Required Python Packages:
    ```python -m pip install -r src/requirements.txt```
 
-4. Run the command:
+4. Run the command to install libraries:
    ```pip install psycopg2```
+   ```pip install pillow```
+   <!-- ```pip install numpy``` -->
+
 
 5.  Install Tailwind CSS:
 ```npm install tailwindcss@v3.4.1```  
