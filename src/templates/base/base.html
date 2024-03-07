@@ -1,18 +1,12 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{% block head_title %}Spatial Blend{% endblock head_title %}</title>
-		{% include 'includes/css.html' %}
-	</head>
-	<body>
-		{% include 'base/navbar.html' %}
-		<div>
-			{% block content %}{% endblock content %}
-		</div>
-		{% include 'base/footer.html' %}
-	</body>
+{% include 'base/head.html' %}
+<body>
+    {% include 'base/navbar.html' %}
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    {% include 'base/footer.html' %}
+</body>
 </html>

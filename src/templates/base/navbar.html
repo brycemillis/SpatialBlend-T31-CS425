@@ -1,6 +1,6 @@
 {% load static %}
 
-<nav class="flex flex-wrap fixed top-0 z-50 items-center justify-between w-full p-4">
+<nav class="flex flex-wrap top-0 z-50 items-center justify-between w-full p-4">
     <a href="{% url 'home' %}" class="flex items-center space-x-3 rtl:space-x-reverse">
         <svg class="h-10 w-10" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
         viewBox="0 0 315.223 315.223" xml:space="preserve">
@@ -22,33 +22,10 @@
         <span class="self-center text-2xl font-bold whitespace-nowrap dark:text-black">SpatialBlend</span>
     </a>
     <div class="space-x-8 flex justify-right text-gray-600">
-        <div id="dropdown-container" class="group z-40 dropdown inline-block">
-  
-            <button onclick="" href="#" class="hover:text-blue-600">Tools
-                <svg class="w-2 h-2 ml-8 cursor-pointer" fill="#000000" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-  viewBox="0 0 330 330" xml:space="preserve">
-  <path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
-  c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
-  s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"/>
-  </svg>
-                
-            </button>
-            <div id="dropdown-menu" class="group-hover:block absolute bg-white shadow-lg w-24 hidden">
-                <a href="#"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool
-                    1</a>
-                <a href="#"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool
-                    2</a>
-                <a href="#"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg">Tool
-                    3</a>
-            </div>
-  
-        </div>
+       
         <a href="/imageCombine/" class="hover:text-blue-600">Blend</a>
         <a href="/imageEditor/" class="hover:text-blue-600">Edit</a>
-        <a href="#" class="hover:text-blue-600">Examples</a>
+        <a href="/learnMore/" class="hover:text-blue-600">Learn More</a>
         <a href="/aboutUs/" class="hover:text-blue-600">About Us</a>
         <div class="space-x-2">
           {% if user.is_authenticated %}
@@ -61,6 +38,5 @@
         </div>
     
     </div>
-  
 </nav>
 <div class="pt-24"></div>
