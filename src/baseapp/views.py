@@ -15,6 +15,10 @@ def about_us_view(request):
     context = {}
     return render(request, "pages/aboutUs.html", context)
 
+def learn_more_view(request):
+    context = {}
+    return render(request, "pages/learnMore.html", context)
+
 def image_combine_view(request):
     context = {}
     return render(request, "pages/imageCombine.html", context)

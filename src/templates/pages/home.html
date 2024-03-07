@@ -2,6 +2,15 @@
 
 
 {% block content %}
+{% load static %}
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="{% static 'custom.css/custom.css' %}">
+</head>
+
     <!-- Hero section -->
     <section
       class="pt-24 md:mt-0 md:h-screen flex flex-col justify-center text-center md:text-left md:flex-row md:justify-between md:items-center lg:px-36 md:px-12 px-6 bg-secondary">
@@ -113,5 +122,39 @@
         </div>
       </div>
     </section>
+    <p class="text-center font-bold pt-32 text-lg">
+      Check out some examples!
+    </p>
+    
+    <div class="slider">
+        <img id="img-1" src="{% static 'src\static\assets\img\dropDown.svg' %}" alt="Image 1"/>
+        <img id="img-2" src="{% static 'src\static\assets\img\angelina_aging.jpg' %}" alt="Image 2"/>
+        <img id="img-3" src= "C:\Users\bryce\OneDrive\Pictures\Screenshots\Jim&Angelina.png" alt="Image 3"/>
+      </div>
+      <div class="navigation-button">
+        <span class="dot active" onclick="changeSlide(0)"></span>
+        <span class="dot" onclick="changeSlide(1)"></span>
+        <span class="dot" onclick="changeSlide(2)"></span>
+      </div>
+    
+    <script>
+    var imgs = document.querySelectorAll('.slider img');
+var dots = document.querySelectorAll('.dot');
+var currentImg = 0; // index of the first image
+const interval = 3000; // duration(speed) of the slide
+
+function changeSlide(n) {
+  for (var i = 0; i < imgs.length; i++) {
+    // reset
+    imgs[i].style.opacity = 0;
+    dots[i].className = dots[i].className.replace(' active', '');
+  }
+  currentImg = n;
+  imgs[currentImg].style.opacity = 1;
+  dots[currentImg].className += ' active';
+}
+    
+      </script>
+      
   </body>
 {% endblock %}
