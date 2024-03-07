@@ -1,8 +1,14 @@
 {% extends "base/base.html" %}
-
+{% load static %}
 
 {% block content %}
-    <!-- Hero section -->
+
+<head>
+  <title>Home</title>
+</head>
+
+<!-- Hero section -->
+<body>
     <section
       class="pt-24 md:mt-0 md:h-screen flex flex-col justify-center text-center md:text-left md:flex-row md:justify-between md:items-center lg:px-36 md:px-12 px-6 bg-secondary">
       <div class="md:flex-1 md:mr-10">
@@ -113,5 +119,56 @@
         </div>
       </div>
     </section>
-  </body>
+    <p class="text-center font-bold pt-32 text-lg">
+      Check out some examples!
+    </p>
+    
+    <div class="slider">
+      <!-- Your Images Here -->
+      <img src="{% static 'assets/img/shrek_harry.png' %}" alt="Image Description">
+      <img src="{% static 'assets/img/marylin_einstein.png' %}" alt="Image Description">
+      <img src="{% static 'assets/img/jorden_styles.png' %}" alt="Image Description">
+      
+      <div class="navigation-button">
+        <!-- Your Dots Here -->
+        <span class="dot" onclick="changeSlide(0)"></span>
+        <span class="dot" onclick="changeSlide(1)"></span>
+        <span class="dot" onclick="changeSlide(2)"></span>
+      </div>
+    </div>
+</body>
+
+<script>
+  var imgs = document.querySelectorAll('.slider img');
+  var dots = document.querySelectorAll('.dot');
+  var currentImg = 0;
+  const interval = 3000;
+  
+  function changeSlide(n) {
+    imgs.forEach((img, index) => {
+      img.style.opacity = 0;
+      dots[index].classList.remove('active');
+    });
+
+    currentImg = (n + imgs.length) % imgs.length;
+
+    imgs[currentImg].style.opacity = 1;
+    dots[currentImg].classList.add('active');
+  }
+
+  function autoAdvance() {
+    changeSlide(currentImg + 1);
+  }
+
+  setInterval(autoAdvance, interval);
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => changeSlide(index));
+  });
+
+  changeSlide(currentImg);
+</script>
+
+</script>
+
 {% endblock %}

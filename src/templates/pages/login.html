@@ -1,7 +1,7 @@
 {% extends "base/base.html" %}
 
 {% block content %}
-
+<title>{% block head_title %}Login{% endblock head_title %}</title>
 <body>
     <!--Login Form-->
     <div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 px-6 pb-40">
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="text-sm leading-5">
-                            <a href="#"
+                            <a href="{% url 'reset_password'%}"
                                 class="font-medium text-blue-600 hover:text-blue-700 focus:outline-none focus:underline">
                                 Forgot your password?
                             </a>

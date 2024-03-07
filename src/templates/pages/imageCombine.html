@@ -1,31 +1,39 @@
 {% extends "base/base.html" %}
 
 {% block content %}
+<head>
+	<title>Blend</title>
+</head>
+
 <body>
-    <div class="mb-4 text-center">
-    <h1 class="font-bold text-5xl">Image Blender</h1>
+	<div class="mb-4 text-center">
+        <h1 class="font-bold text-5xl">Image Blender</h1>
     </div>
     <div class="width-full mx-auto md:max-w-screen-xl">
-        <!-- Start of form for image upload -->
-        {% comment %} <form action="{% url 'upload_image' %}" method="post" enctype="multipart/form-data"> {% endcomment %}
+        <form action="{% url 'image_combine' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="bg-blue-300 rounded-lg mx-8 shadow-lg p-2 mt-16">
-                <div id="drop_zone"
-                    class="h-64 border-dashed border-2 border-white rounded-lg flex flex-col justify-center items-center cursor-pointer bg-blue-600">
+                <div id="drop_zone" class="h-64 border-dashed border-2 border-white rounded-lg flex flex-col justify-center items-center cursor-pointer bg-blue-600">
                     <span class="block text-white font-semibold mb-2">Drag & Drop Images Here</span>
                     <span class="block text-white">or</span>
-                    <!-- File input for choosing files -->
-                    <input type="file" name="image" class="hidden" id="file_input">
-                    <label for="file_input" class="bg-white mt-4 hover:bg-gray-200 text-black p-2 rounded cursor-pointer">Choose Files</label>
+                    <input type="file" name="image1" class="hidden" id="id_image1">
+                    <label for="id_image1" class="bg-white mt-4 hover:bg-gray-200 text-black p-2 rounded cursor-pointer">Choose First Image</label>
+                    <input type="file" name="image2" class="hidden" id="id_image2">
+                    <label for="id_image2" class="bg-white mt-4 hover:bg-gray-200 text-black p-2 rounded cursor-pointer">Choose Second Image</label>
                 </div>
             </div>
-            <div class="text-center mt-4">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Upload
-                </button>
+            <div class="text-center mt-4" id="uploadButton">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Begin Blend</button>
             </div>
-        {% comment %} </form> {% endcomment %}
+        </form>
+        <!-- Display the download link if it exists -->
+        {% if hybrid_image_url %}
+            <div class="mt-4 text-center">
+                <a href="{{ hybrid_image_url }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" download>Download Hybrid Image</a>
+            </div>
+        {% endif %}
     </div>
+	
     <div class="flex flex-col md:flex-row justify-between items-center px-4 py-2 mt-16 md:w-10/12 mx-auto md:max-w-screen-xl">   
         <!-- Question section --> 
         <div class="flex items-center mb-4 md:mb-0">
@@ -165,45 +173,63 @@
     </div>
 </body>
 
-    
+<script>
+    document.getElementById('id_image1').addEventListener('change', function(event) {
+        updateLabel(this, 'label[for="id_image1"]');
+    });
+
+    document.getElementById('id_image2').addEventListener('change', function(event) {
+        updateLabel(this, 'label[for="id_image2"]');
+    });
+
+    function updateLabel(fileInput, labelSelector) {
+        var label = document.querySelector(labelSelector);
+        if (fileInput.files.length > 0) {
+            var fileName = fileInput.files[0].name;
+            label.textContent = fileName; // Update the label text with the file name
+        } else {
+            // Reset to default text if no file is selected
+            label.textContent = fileInput.id === 'id_image1' ? 'Choose First Image' : 'Choose Second Image';
+        }
+    }
+</script>
 
 
 
+<script>
+	let dropZone = document.getElementById('drop_zone');
 
-    <script>
-        let dropZone = document.getElementById('drop_zone');
+	dropZone.addEventListener('dragover', (e) => {
+		e.preventDefault();
+		dropZone.classList.add('bg-gray-200');
+	});
 
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.classList.add('bg-gray-200');
-        });
+	dropZone.addEventListener('dragleave', (e) => {
+		e.preventDefault();
+		dropZone.classList.remove('bg-gray-200');
+	});
 
-        dropZone.addEventListener('dragleave', (e) => {
-            e.preventDefault();
-            dropZone.classList.remove('bg-gray-200');
-        });
+	dropZone.addEventListener('drop', (e) => {
+		e.preventDefault();
+		dropZone.classList.remove('bg-gray-200');
+		let files = e.dataTransfer.files;
+		console.log(files);
+		// Handle the uploaded files here
+	});
+</script>
 
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.classList.remove('bg-gray-200');
-            let files = e.dataTransfer.files;
-            console.log(files);
-            // Handle the uploaded files here
-        });
-    </script>
+<script>
+	let dropdownContainer = document.getElementById('dropdown-container');
+	let dropdownMenu = document.getElementById('dropdown-menu');
 
-    <script>
-        let dropdownContainer = document.getElementById('dropdown-container');
-        let dropdownMenu = document.getElementById('dropdown-menu');
+	dropdownContainer.addEventListener('mouseenter', function () {
+		dropdownMenu.classList.remove('hidden');
+	});
 
-        dropdownContainer.addEventListener('mouseenter', function () {
-            dropdownMenu.classList.remove('hidden');
-        });
-
-        dropdownContainer.addEventListener('mouseleave', function () {
-            dropdownMenu.classList.add('hidden');
-        });
-    </script>
+	dropdownContainer.addEventListener('mouseleave', function () {
+		dropdownMenu.classList.add('hidden');
+	});
+</script>
 
 </body>
 
