@@ -105,3 +105,27 @@ If you encounter any issues, try the following:
 - **CSS Not Displaying Correctly:** If CSS styles are not being applied properly, try clearing your browser's cache and refreshing the page.
 
 - For any other issues, feel free to reach out for assistance.
+
+### Functional Requirements & Other Needed Implemenation
+
+Below are the functional requriements of this project that need to be implemented.
+
+
+- ~ FR1. Image Upload: Application shall allow users to upload a minimum of two images for processing. ~
+- FR2. Image Download: Application shall provide capability to download the processed/merged image.
+- FR3. Spatial Frequency Adjustment: Application shall implement basic tools to alter spatial frequencies of uploaded images.
+- FR4. Composite Image Creation: Application shall combine two images to produce a composite image.
+- FR5. User Interface Design: Application shall present a simple layout with clear instruction for uploading, manipulating, and downloading images.
+- FR6. Admin Page: Application shall contain an admin page to manage users and uploaded content.
+- FR7. Enhanced Spatial Frequency Tools: Application shall offer enhanced tools for more control over spatial frequency alterations (possibly adjusting color and contrast of images).
+- FR8.User Login and Registration: Application shall provide User Login and Registration.
+- FR9. Database Management: Application shall contain a database to store user info and images.
+- FR10. Custom Image Saving: Application shall allow the user to save images in a user-specified format and location in the application.
+- FR11. Local Storage Download: Application shall provide the functionality to download images after processing to the user's local storage.
+- FR12. Real-Time Visualization: Application shall implement a real-time feature for visualization changes.
+- FR13. Composite Image Weightage Adjustment: Application shall allow users to adjust the weightage of each image in the composite.
+- FR14. Design and Usability Update: Application shall update its design to provide more simple and modern visualization. It shall also provide more intuitive controls and navigation for users.
+- FR15. Advanced Image Merging: Application shall support advanced image merging (e.g., selfies will be aligned based on facial structure).
+- FR16. 3D Image Merging Tools: Application shall introduce tools for 3D image processing.
+- FR17. Human Vision Tools: Application shall include tools to examine human vision concepts like depth perception.
+- FR18. Visual Illusion Exploration: Application shall examine intricate visual illusions, such as the hollow face illusion.
