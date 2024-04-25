@@ -7,6 +7,8 @@ from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.http import HttpResponse
+from .models import Image as ImageModel
 
 from .forms import CreateUserForm, ImageUploadForm
 from .image_processing import create_hybrid_image
@@ -33,18 +35,20 @@ def image_combine_view(request):
             image2 = Image.open(request.FILES['image2'])
             hybrid_image = create_hybrid_image(image1, image2, low_pass_cutoff=20, high_pass_cutoff=40)
 
-            # Convert PIL image to byte array
             image_io = BytesIO()
             hybrid_image.save(image_io, format='PNG')
             image_io.seek(0)
 
-            # Save the hybrid image in Django's default storage (usually media folder)
-            filename = 'hybrid_images/hybrid_image_result.png'
-            default_storage.save(filename, ContentFile(image_io.getvalue()))
-
-            # Generate the URL for downloading
-            hybrid_image_url = default_storage.url(filename)
-            context['hybrid_image_url'] = hybrid_image_url
+            if request.user.is_authenticated:
+                image_model_instance = ImageModel()
+                image_model_instance.user = request.user
+                image_model_instance.image.save('hybrid_image_result.png', ContentFile(image_io.getvalue()))
+                image_model_instance.save()
+                messages.success(request, "Hybrid image created and saved successfully!")
+            
+            response = HttpResponse(image_io.getvalue(), content_type='image/png')
+            response['Content-Disposition'] = 'attachment; filename="hybrid_image_result.png"'
+            return response
     else:
         form = ImageUploadForm()
     
