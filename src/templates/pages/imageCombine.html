@@ -14,24 +14,20 @@
             {% csrf_token %}
             <div class="bg-blue-300 rounded-lg mx-8 shadow-lg p-2 mt-16">
                 <div id="drop_zone" class="h-64 border-dashed border-2 border-white rounded-lg flex flex-col justify-center items-center cursor-pointer bg-blue-600">
-                    <span class="block text-white font-semibold mb-2">Drag & Drop Images Here</span>
-                    <span class="block text-white">or</span>
+                    <span class="block text-white font-semibold mb-2">Upload Images Here</span>
                     <input type="file" name="image1" class="hidden" id="id_image1">
                     <label for="id_image1" class="bg-white mt-4 hover:bg-gray-200 text-black p-2 rounded cursor-pointer">Choose First Image</label>
                     <input type="file" name="image2" class="hidden" id="id_image2">
                     <label for="id_image2" class="bg-white mt-4 hover:bg-gray-200 text-black p-2 rounded cursor-pointer">Choose Second Image</label>
                 </div>
             </div>
-            <div class="text-center mt-4" id="uploadButton">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Begin Blend</button>
+            <div class="text-center mt-4">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Begin Blend and Download</button>
             </div>
         </form>
-        <!-- Display the download link if it exists -->
-        {% if hybrid_image_url %}
-            <div class="mt-4 text-center">
-                <a href="{{ hybrid_image_url }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" download>Download Hybrid Image</a>
-            </div>
-        {% endif %}
+        <div class="mt-4 text-center">
+            <p class="text-blue-700">Click "Begin Blend and Download" to blend your images and download the result automatically.</p>
+        </div>
     </div>
 	
     <div class="flex flex-col md:flex-row justify-between items-center px-4 py-2 mt-16 md:w-10/12 mx-auto md:max-w-screen-xl">   
