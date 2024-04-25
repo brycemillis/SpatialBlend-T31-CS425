@@ -44,13 +44,13 @@ Clone the repository from Github and open it in VS Code. Open a terminal and nav
    On MacOS:
    ```source venv/bin/activate```
 
-3. Install Required Python Packages:
+3. Install Required Python Packages (NOTE: Django installed here):
    ```python -m pip install -r src/requirements.txt```
 
 4. Run the command to install libraries:
    ```pip install psycopg2```
    ```pip install pillow```
-   <!-- ```pip install numpy``` -->
+   ```pip install numpy```
 
 
 5.  Install Tailwind CSS:
