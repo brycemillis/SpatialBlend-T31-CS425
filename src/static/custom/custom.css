@@ -43,3 +43,9 @@ transform: translate(-50%, -50%); /* Adjust for centering */
 .active, .dot:hover {
   background-color: #2564eb;
 }
+
+#gallery img {
+  width: 300px;  /* Adjust the width as needed */
+  height: 200px; /* Adjust the height as needed */
+  object-fit: cover; /* Ensures images cover the area without distortion */
+}

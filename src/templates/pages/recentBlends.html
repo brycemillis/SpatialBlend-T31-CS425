@@ -1,23 +1,64 @@
 {% extends "base/base.html" %}
-
+{% load static %}
 {% block content %}
-
+<head>
+    
+    <title>My Blends</title>
+   
+</head>
 <body>
-    <div class="mb-4 text-center">
-    <h1 class="font-bold text-5xl">Recent Blends</h1>
-    </div>
-    <script>
-        let dropdownContainer = document.getElementById('dropdown-container');
-        let dropdownMenu = document.getElementById('dropdown-menu');
-
-        dropdownContainer.addEventListener('mouseenter', function () {
-            dropdownMenu.classList.remove('hidden');
-        });
-
-        dropdownContainer.addEventListener('mouseleave', function () {
-            dropdownMenu.classList.add('hidden');
-        });
-    </script>
 </body>
+    <h1 class="mb-10 text-center font-bold text-5xl">My Blends</h1>
+    <div>
+        <h3 class="text-lg font-bold">This is a great place to save and display your blends!</h3>
+      
+    </div>
+    <input class= "mb-4 mt-6" type="file" id="imageInput" accept="image/*" multiple>
+    <div class= "">
+    <button class="bg-blue-500 text-white hover:text-blue-700 rounded w-1/4 mt-5" onclick="uploadImages()">Upload Images</button>
+</div>
+    <div id="gallery"></div>
+
+    
+    <script>
+       
+        let images = JSON.parse(localStorage.getItem('images')) || [];
+
+window.onload = function() {
+    displayImages();
+};
+
+function uploadImages() {
+    const files = document.getElementById('imageInput').files;
+    if (files.length + images.length > 20) {
+        alert('You can only store up to 20 images. Please select fewer images.');
+        return;
+    }
+
+    Array.from(files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            images.push(e.target.result);
+            localStorage.setItem('images', JSON.stringify(images));
+            displayImages();
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
+function displayImages() {
+    const gallery = document.getElementById('gallery');
+    gallery.innerHTML = '';
+    images.forEach(image => {
+        const imgElement = document.createElement('img');
+        imgElement.src = image;
+        gallery.appendChild(imgElement);
+    });
+}
+
+    
+    </script>
+
+</html>
 
 {% endblock %}
