@@ -76,90 +76,6 @@
     </script>
 </body> {% endcomment %}
 
-
-{% comment %} Image edit with Contrast {% endcomment %}
-
-
-
- <body>
-    <div class="mb-4 text-center">
-        <h1 class="font-bold text-5xl">Image Editor</h1>
-    </div>
-    {% comment %}
-    <div class="bg-purple-300 rounded-lg mx-8 shadow-lg p-2 mt-16">
-        <div id="drop_zone" class="h-64 border-dashed border-2 border-white rounded-lg flex flex-col justify-center items-center cursor-pointer bg-purple-600">
-            <span class="block text-white font-semibold mb-2">Drag & Drop Images Here</span>
-            <span class="block text-white">or</span>
-            <input type="file" id="fileInput" accept="image/*" class="hidden" onchange="handleFiles(this.files)">
-            <label for="fileInput" class="bg-white mt-4 hover:bg-gray-200 text-black p-2 rounded cursor-pointer">Choose Files</label>
-        </div>
-    </div>
-
-    <div id="previewContainer" class="mt-8 mx-auto max-w-lg"></div>
-
-    <div class="mt-4 mx-auto max-w-lg">
-        <label for="contrastRange" class="block text-center font-semibold">Contrast:</label>
-        <input type="range" id="contrastRange" min="1" max="100" value="50" onchange="adjustContrast(this.value)" class="block mx-auto">
-    </div>
-
-    <div class="mt-4 mx-auto max-w-lg text-center">
-        <button onclick="saveImage()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save Image</button>
-        <button onclick="downloadImage()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-4">Download Image</button>
-    </div>
-
-    <script>
-        let imgElement;
-
-        function handleFiles(files) {
-            const file = files[0];
-            if (file) {
-                const reader = new FileReader();
-
-                reader.onload = function(e) {
-                    imgElement = document.createElement("img");
-                    imgElement.src = e.target.result;
-                    imgElement.classList.add("mx-auto", "max-h-64"); // Adjust the image size if needed
-                    document.getElementById("previewContainer").innerHTML = ""; // Clear previous previews
-                    document.getElementById("previewContainer").appendChild(imgElement);
-                };
-
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function adjustContrast(value) {
-            if (imgElement) {
-                const contrastValue = parseInt(value) / 100;
-                imgElement.style.filter = "contrast(" + contrastValue + ")";
-            }
-        }
-
-        function saveImage() {
-            if (imgElement) {
-                const canvas = document.createElement("canvas");
-                const ctx = canvas.getContext("2d");
-                canvas.width = imgElement.width;
-                canvas.height = imgElement.height;
-                ctx.drawImage(imgElement, 0, 0);
-
-                const link = document.createElement('a');
-                link.download = 'edited_image.png';
-                link.href = canvas.toDataURL("image/png").replace(/^data:image\/[^;]/, 'data:application/octet-stream');
-                link.click();
-            }
-        }
-
-        function downloadImage() {
-            if (imgElement) {
-                const link = document.createElement('a');
-                link.download = 'edited_image.png';
-                link.href = imgElement.src;
-                link.click();
-            }
-        }
-    </script>
-</body>
-
 {% comment %} Transparency {% endcomment %}
 
 {% comment %} <body>
@@ -243,278 +159,147 @@
     </script>
 </body> {% endcomment %} 
 
-{% comment %} Image editor - ALL {% endcomment %}
-{% comment %} <body>
+{% comment %} Image editor {% endcomment %}
+
+<body>
     <div class="mb-4 text-center">
         <h1 class="font-bold text-5xl">Image Editor</h1>
     </div>
-     {% endcomment %}
+
     {% comment %} space {% endcomment %}
-    {% comment %} <div class="mb-8"></div> {% endcomment %}
-    
-    {% comment %} Contrast {% endcomment %}
+    <div class="mb-8"></div>
 
 
-    {% comment %} <div class="mb-4 text-center">
-        <h2 class="font-bold text-3xl text-blue-600">Contrast</h2>
-    </div> {% endcomment %}
-    
-    
-    {% comment %} <div class="bg-purple-300 rounded-lg mx-8 shadow-lg p-2 mt-16">
+<!--COTRAST-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Contrast Adjustment</title>
+</head>
+<body>
+    <div class="bg-purple-300 rounded-lg mx-8 shadow-lg p-2 mt-16">
         <div id="contrast_drop_zone" class="h-64 border-dashed border-2 border-white rounded-lg flex flex-col justify-center items-center cursor-pointer bg-purple-600">
-            <span class="block text-white font-semibold mb-2">Contrast: Drag & Drop Images Here</span>
-            <input type="file" id="contrast_fileInput" accept="image/*" class="hidden" onchange="handleContrastFiles(this.files)">
+            <span class="block text-white font-semibold mb-2">"Contrast"</span>
+            <input type="file" id="contrast_fileInput" accept="image/*" class="hidden" onchange="loadImage(event)">
             <label for="contrast_fileInput" class="bg-white mt-4 hover:bg-gray-200 text-black p-2 rounded cursor-pointer">Choose Files for Contrast</label>
         </div>
     </div>
 
-    <div id="contrast_previewContainer" class="mt-8 mx-auto max-w-lg"></div>
+    <div id="contrastpreview" class="mt-8 mx-auto max-w-lg"></div>
 
-    <div class="mt-4 mx-auto max-w-lg">
-        <label for="contrastRange" class="block text-center font-semibold">Contrast:</label>
-        <input type="range" id="contrastRange" min="1" max="100" value="50" onchange="adjustContrast(this.value)" class="block mx-auto">
-    </div>
-
-    <div class="mt-4 mx-auto max-w-lg text-center">
-        <button onclick="saveImage('contrastImg')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save Image</button> {% endcomment %}
-        {% comment %} <button onclick="downloadImage('contrastImg')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-4">Download Image</button> {% endcomment %}
-    {% comment %} </div> {% endcomment %}
-
-
-
-    {% comment %} Transparency  {% endcomment %}
-
-
-    {% comment %} <div class="bg-purple-300 rounded-lg mx-8 shadow-lg p-2 mt-16">
-        <div id="transparency_drop_zone" class="h-64 border-dashed border-2 border-white rounded-lg flex flex-col justify-center items-center cursor-pointer bg-purple-600">
-            <span class="block text-white font-semibold mb-2">Transparency: Drag & Drop Images Here</span>
-            <input type="file" id="transparency_fileInput" accept="image/*" class="hidden" onchange="handleTransparencyFiles(this.files)">
-            <label for="transparency_fileInput" class="bg-white mt-4 hover:bg-gray-200 text-black p-2 rounded cursor-pointer">Choose Files for Transparency</label>
-        </div>
-    </div>
-
-    <div id="transparency_previewContainer" class="mt-8 mx-auto max-w-lg"></div>
-
-    <div class="mt-4 mx-auto max-w-lg">
-        <label for="transparencyRange" class="block text-center font-semibold">Transparency:</label>
-        <input type="range" id="transparencyRange" min="0" max="100" value="0" onchange="adjustTransparency(this.value)" class="block mx-auto">
-    </div>
-
-    <div class="mt-4 mx-auto max-w-lg text-center">
-        <button onclick="saveImage('transparencyImg')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save Image</button> {% endcomment %}
-        {% comment %} <button onclick="downloadImage('transparencyImg')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-4">Download Image</button> {% endcomment %}
-    {% comment %} </div> {% endcomment %}
-
-
-    {% comment %} Blur  {% endcomment %}
-
-
-    {% comment %} <div class="bg-purple-300 rounded-lg mx-8 shadow-lg p-2 mt-16">
-        <div id="blur_drop_zone" class="h-64 border-dashed border-2 border-white rounded-lg flex flex-col justify-center items-center cursor-pointer bg-purple-600">
-            <span class="block text-white font-semibold mb-2">Blur: Drag & Drop Images Here</span>
-            <input type="file" id="blur_fileInput" accept="image/*" class="hidden" onchange="handleBlurFiles(this.files)">
-            <label for="blur_fileInput" class="bg-white mt-4 hover:bg-gray-200 text-black p-2 rounded cursor-pointer">Choose Files for Blur</label>
-        </div>
-    </div>
-
-    <div id="blur_previewContainer" class="mt-8 mx-auto max-w-lg"></div>
-
-    <div class="mt-4 mx-auto max-w-lg">
-        <label for="blurRange" class="block text-center font-semibold">Blur:</label>
-        <input type="range" id="blurRange" min="0" max="10" value="0" step="0.1" onchange="adjustBlur(this.value)" class="block mx-auto">
-    </div>
-
-    <div class="mt-4 mx-auto max-w-lg text-center">
-        <button onclick="saveImage('blurImg')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save Image</button> {% endcomment %}
-        {% comment %} <button onclick="downloadImage('blurImg')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-4">Download Image</button> {% endcomment %}
-        {% comment %} <div class="mb-20"></div>
-        <div class="mb-20"></div>
-    </div>
-
-    <script>
-        let contrastImgElement, transparencyImgElement, blurImgElement;
-
-        function handleContrastFiles(files) {
-            handleFiles(files, 'contrast');
-        }
-
-        function handleTransparencyFiles(files) {
-            handleFiles(files, 'transparency');
-        }
-
-        function handleBlurFiles(files) {
-            handleFiles(files, 'blur');
-        } {% endcomment %}
-
-        {% comment %} function handleFiles(files, type) {
-            const file = files[0];
-            if (file) {
-                const reader = new FileReader();
-
-                reader.onload = function(e) {
-                    const imgElement = document.createElement("img");
-                    imgElement.src = e.target.result;
-                    imgElement.classList.add("mx-auto", "max-h-64");
-
-                    if (type === 'contrast') {
-                        contrastImgElement = imgElement;
-                        document.getElementById("contrast_previewContainer").innerHTML = "";
-                        document.getElementById("contrast_previewContainer").appendChild(contrastImgElement);
-                    } else if (type === 'transparency') {
-                        transparencyImgElement = imgElement;
-                        document.getElementById("transparency_previewContainer").innerHTML = "";
-                        document.getElementById("transparency_previewContainer").appendChild(transparencyImgElement);
-                    } else if (type === 'blur') {
-                        blurImgElement = imgElement;
-                        document.getElementById("blur_previewContainer").innerHTML = "";
-                        document.getElementById("blur_previewContainer").appendChild(blurImgElement);
-                    }
-                };
-
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function adjustContrast(value) {
-            if (contrastImgElement) {
-                const contrastValue = parseInt(value) / 100;
-                contrastImgElement.style.filter = "contrast(" + contrastValue + ")";
-            }
-        }
-
-        function adjustTransparency(value) {
-            if (transparencyImgElement) {
-                const transparencyValue = parseInt(value) / 100;
-                transparencyImgElement.style.opacity = transparencyValue;
-            }
-        }
-
-        function adjustBlur(value) {
-            if (blurImgElement) {
-                blurImgElement.style.filter = "blur(" + value + "px)";
-            }
-        }
-
-        function saveImage(imageType) {
-            let img;
-            if (imageType === 'contrastImg') {
-                img = contrastImgElement;
-            } else if (imageType === 'transparencyImg') {
-                img = transparencyImgElement;
-            } else if (imageType === 'blurImg') {
-                img = blurImgElement;
-            }
-
-            if (img) {
-                // Create a canvas with the same dimensions as the image
-                const canvas = document.createElement("canvas");
-                const ctx = canvas.getContext("2d");
-                canvas.width = img.naturalWidth;
-                canvas.height = img.naturalHeight;
-
-                // Draw the image onto the canvas
-                ctx.drawImage(img, 0, 0);
-
-                // Convert the canvas to a data URL and trigger download
-                const link = document.createElement('a');
-                link.download = 'edited_image.png';
-                link.href = canvas.toDataURL("image/png").replace(/^data:image\/[^;]/, 'data:application/octet-stream');
-                link.click();
-            }
-        }
-
-        function downloadImage(imageType) {
-            let img;
-            if (imageType === 'contrastImg') {
-                img = contrastImgElement;
-            } else if (imageType === 'transparencyImg') {
-                img = transparencyImgElement;
-            } else if (imageType === 'blurImg') {
-                img = blurImgElement;
-            }
-
-            if (img) {
-                const link = document.createElement('a');
-                link.download = 'edited_image.png';
-                link.href = img.src;
-                link.click();
-            }
-        }
-        
-    </script>
-</body> {% endcomment %}
-
-
-
- {% comment %} bigger space {% endcomment %}
- 
- 
- {% comment %} <div class="mb-20"></div>
- <div class="mb-20"></div>
- <div class="mb-20"></div> {% endcomment %}
- 
-  
-
-{% comment %} Combined {% endcomment %}
-
-<!-- Combined Image Editing  -->
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Editor</title>
-    <style>
-        /* Your CSS styles here */
-        .bg-purple-600 {
-            background-size: cover;
-            background-position: center;
-        }
-        .preview-container {
-            position: absolute;
-            top: 0;
-            left: 0; /* Align left of the dark purple box */
-            bottom: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            pointer-events: none;
-            z-index: 1; /* Ensure preview is on top */
-        }
-        .preview-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="bg-purple-300 rounded-lg mx-8 shadow-lg p-2 mt-16 h-96 relative">
-        <div id="combined_drop_zone" class="h-64 border-dashed border-2 border-white rounded-lg flex flex-col justify-center items-center cursor-pointer bg-purple-600 relative">
-            <span class="block text-white font-semibold mb-2">Start Edit Image Here!!</span>
-            <input type="file" id="combined_fileInput" accept="image/*" class="hidden" onchange="handleCombinedFiles(this.files)">
-            <label for="combined_fileInput" class="bg-white mt-4 hover:bg-gray-200 text-black p-2 rounded cursor-pointer">Choose File</label>
-            <div id="previewContainer" class="preview-container"></div>
-        </div>
-    </div>
-
-    <div class="flex flex-row flex-nowrap flex-auto width-full mx-auto md:max-w-screen-xl gap-x-14">
-        <div class="rounded-lg p-4 flex-1" style="max-width:300px;">
+    <div class="mt-8 mx-auto max-w-lg flex justify-center items-center">
+        <div class="rounded-lg p-4" style="max-width:300px;">
             <div class="price-range p-4">
                 <span class="text-sm">Contrast</span>
-                <span class="text-sm" id="contrastValue"></span>
-                <input class="w-full accent-purple-600" type="range" name="" value="40" min="0" max="100" oninput="adjustCombinedContrast(this.value)" />
+                <span class="text-sm" id="contrastValue">0</span>
+                <input class="w-full accent-purple-600" type="range" name="" value="40" min="0" max="100" oninput="adjustContrast(this.value)" />
                 <div class="-mt-2 flex w-full justify-between">
                     <span class="text-sm text-gray-600">0</span>
                     <span class="text-sm text-gray-600">100</span>
                 </div>
             </div>
         </div>
-        <div class="rounded-lg p-4 flex-1" style="max-width:300px;">
+    </div>
+
+    <div class="mt-4 mx-auto max-w-lg text-center">
+        <button onclick="saveImage('imageCanvas')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save Image</button>
+    </div>
+
+    <input type="file" id="imageLoader" name="imageLoader" class="hidden">
+    <canvas id="imageCanvas" class="hidden"></canvas>
+
+    <script>
+        // Function to load image and apply contrast adjustment
+        function loadImage(event) {
+            var canvas = document.getElementById('imageCanvas');
+            var ctx = canvas.getContext('2d');
+            var img = new Image();
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+                showContrastPreview(canvas); // Show original image in preview
+                document.getElementById('imageLoader').value = null; // Reset file input
+            }
+            img.src = URL.createObjectURL(event.target.files[0]);
+        }
+
+        // Function to display image preview
+        function showContrastPreview(imgOrCanvas) {
+            var previewContainer = document.getElementById('contrastpreview');
+            previewContainer.innerHTML = ''; // Clear previous preview
+            var previewImg = document.createElement('img');
+            previewImg.src = imgOrCanvas.toDataURL ? imgOrCanvas.toDataURL() : imgOrCanvas.src;
+            previewImg.style.width = '100%';
+            previewImg.style.height = '100%';
+            previewContainer.appendChild(previewImg);
+        }
+
+        // Function to apply contrast adjustment to the image
+        function adjustContrast(contrast) {
+            document.getElementById('contrastValue').textContent = contrast;
+            var canvas = document.getElementById('imageCanvas');
+            var ctx = canvas.getContext('2d');
+            var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            var data = imageData.data;
+
+            // Apply contrast
+            var factor = (259 * (contrast + 255)) / (255 * (259 - contrast));
+            for (var i = 0; i < data.length; i += 4) {
+                data[i] = factor * (data[i] - 128) + 128;
+                data[i + 1] = factor * (data[i + 1] - 128) + 128;
+                data[i + 2] = factor * (data[i + 2] - 128) + 128;
+            }
+
+            ctx.putImageData(imageData, 0, 0);
+            showContrastPreview(canvas); // Update preview with adjusted image
+        }
+
+        // Event listener for contrast input
+        document.getElementById('contrastRange').addEventListener('input', function() {
+            adjustContrast(parseInt(this.value));
+        });
+
+        // Function to save the image
+        function saveImage(canvasId) {
+            var canvas = document.getElementById(canvasId);
+            var link = document.createElement('a');
+            link.download = 'adjusted_image.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+</html>
+
+
+
+<!-- TRANSPARENCY -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transparent Image Editor</title>
+</head>
+<body>
+    <div class="bg-purple-300 rounded-lg mx-8 shadow-lg p-2 mt-16">
+        <div id="transparency_drop_zone" class="h-64 border-dashed border-2 border-white rounded-lg flex flex-col justify-center items-center cursor-pointer bg-purple-600">
+            <span class="block text-white font-semibold mb-2">"Transparency"</span>
+            <input type="file" id="transparency_fileInput" accept="image/*" class="hidden" onchange="loadImage(event)">
+            <label for="transparency_fileInput" class="bg-white mt-4 hover:bg-gray-200 text-black p-2 rounded cursor-pointer">Choose Files for Transparency</label>
+        </div>
+    </div>
+
+    <div id="transparencyPreviewContainer" class="mt-8 mx-auto max-w-lg"></div>
+
+    <div class="flex justify-center"> <!-- Center the adjust bar -->
+        <div class="rounded-lg p-4" style="max-width:300px;">
             <div class="price-range p-4">
                 <span class="text-sm">Transparency</span>
                 <span class="text-sm" id="transparencyValue"></span>
@@ -525,93 +310,168 @@
                 </div>
             </div>
         </div>
-        <div class="rounded-lg p-4 flex-1" style="max-width:300px;">
-            <div class="price-range p-4">
-                <span class="text-sm">Blur</span>
-                <span class="text-sm" id="blurValue"></span>
-                <input class="w-full accent-purple-600" type="range" name="" value="0" min="0" max="10" step="0.1" oninput="adjustCombinedBlur(this.value)" />
-                <div class="-mt-2 flex w-full justify-between">
-                    <span class="text-sm text-gray-600">0</span>
-                    <span class="text-sm text-gray-600">10</span>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="mt-4 mx-auto max-w-lg text-center">
-        <button onclick="saveCombinedEdit()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save Image</button>
+        <button onclick="saveImage('transparencyPreviewCanvas')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save Image</button>
     </div>
 
+    <input type="file" id="imageLoader2" name="imageLoader2" class="hidden">
+    <canvas id="imageCanvas" class="hidden"></canvas>
+    <canvas id="transparencyPreviewCanvas" class="mt-8 mx-auto max-w-lg"></canvas>
+
     <script>
-        let combinedImgElement;
-
-        function handleCombinedFiles(files) {
-            const file = files[0];
-            if (file) {
-                const reader = new FileReader();
-
-                reader.onload = function(e) {
-                    const imgElement = document.createElement("img");
-                    imgElement.src = e.target.result;
-                    imgElement.classList.add("preview-image");
-                    combinedImgElement = imgElement;
-                    document.getElementById("previewContainer").innerHTML = "";
-                    document.getElementById("previewContainer").appendChild(combinedImgElement);
-                };
-
-                reader.readAsDataURL(file);
+        // Function to load image and apply transparency adjustment
+        function loadImage(event) {
+            var canvas = document.getElementById('imageCanvas');
+            var ctx = canvas.getContext('2d');
+            var img = new Image();
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+                showTransparencyPreview(img); // Show original image in preview
+                document.getElementById('imageLoader2').value = null; // Reset file input
             }
+            img.src = URL.createObjectURL(event.target.files[0]);
+           
         }
 
-        function adjustCombinedContrast(value) {
-            if (combinedImgElement) {
-                const contrastValue = parseInt(value);
-                combinedImgElement.style.filter = `contrast(${contrastValue}%)`;
-                document.getElementById("contrastValue").innerText = value;
-            }
+        // Function to display image preview
+        function showTransparencyPreview(img) {
+            var previewCanvas = document.getElementById('transparencyPreviewCanvas');
+            var ctx = previewCanvas.getContext('2d');
+            previewCanvas.width = img.width;
+            previewCanvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
         }
 
-        function adjustCombinedTransparency(value) {
-            if (combinedImgElement) {
-                const transparencyValue = parseInt(value);
-                combinedImgElement.style.opacity = transparencyValue / 100;
-                document.getElementById("transparencyValue").innerText = value;
-            }
+        // Function to apply transparency adjustment to the image
+        function adjustCombinedTransparency(transparency) {
+            var canvas = document.getElementById('transparencyPreviewCanvas');
+            var ctx = canvas.getContext('2d');
+            var img = document.getElementById('imageCanvas');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.globalAlpha = transparency / 100;
+            ctx.drawImage(img, 0, 0);
+            document.getElementById('transparencyValue').textContent = transparency;
         }
 
-        function adjustCombinedBlur(value) {
-            if (combinedImgElement) {
-                combinedImgElement.style.filter = `blur(${value}px)`;
-                document.getElementById("blurValue").innerText = value;
-            }
+        // Function to save the image
+        function saveImage(canvasId) {
+            var canvas = document.getElementById(canvasId);
+            var link = document.createElement('a');
+            link.download = 'adjusted_image.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
         }
-
-        function saveCombinedEdit() {
-            if (combinedImgElement) {
-                const canvas = document.createElement("canvas");
-                const ctx = canvas.getContext("2d");
-        
-                canvas.width = combinedImgElement.naturalWidth;
-                canvas.height = combinedImgElement.naturalHeight;
-        
-                // Draw the adjusted image onto the canvas with applied filters
-                ctx.filter = combinedImgElement.style.filter;
-                ctx.globalAlpha = parseFloat(combinedImgElement.style.opacity);
-                ctx.drawImage(combinedImgElement, 0, 0);
-        
-                // Convert canvas content to image and download it
-                const link = document.createElement('a');
-                link.download = 'edited_image.png';
-                link.href = canvas.toDataURL("image/png");
-                link.click();
-            }
-        }
-        
     </script>
 </body>
-
 </html>
 
+
+
+
+
+<!--Combined-->
+
+{% comment %} <body>
+    <div class="bg-purple-300 rounded-lg mx-8 shadow-lg p-2 mt-16">
+        <div id="contrast_drop_zone" class="h-64 border-dashed border-2 border-white rounded-lg flex flex-col justify-center items-center cursor-pointer bg-purple-600">
+            <span class="block text-white font-semibold mb-2">"Contrast"</span>
+            <input type="file" id="contrast_fileInput" accept="image/*" class="hidden" onchange="loadImage(event)">
+            <label for="contrast_fileInput" class="bg-white mt-4 hover:bg-gray-200 text-black p-2 rounded cursor-pointer">Choose Files for Contrast</label>
+        </div>
+    </div>
+
+    <div id="imagePreview" class="mt-8 mx-auto max-w-lg"></div>
+
+    <div class="mt-8 mx-auto max-w-lg">
+        <label for="contrastRange" class="block text-center font-semibold">Contrast:</label>
+        <input type="range" id="contrastRange" min="-100" max="100" value="0" class="block mx-auto">
+    </div>
+
+    <div class="mt-8 mx-auto max-w-lg">
+        <label for="alphaRange" class="block text-center font-semibold">Transparency:</label>
+        <input type="range" id="alphaRange" min="0" max="255" value="255" class="block mx-auto">
+    </div>
+
+    <div class="mt-4 mx-auto max-w-lg text-center">
+        <button onclick="saveImage('imageCanvas')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save Image</button>
+    </div>
+
+    <input type="file" id="imageLoader" name="imageLoader" class="hidden">
+    <canvas id="imageCanvas" class="hidden"></canvas>
+
+    <script>
+        // Function to load image and apply contrast adjustment
+        function loadImage(event) {
+            var canvas = document.getElementById('imageCanvas');
+            var ctx = canvas.getContext('2d');
+            var img = new Image();
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+                showImagePreview(canvas); // Show original image in preview
+                adjustContrastAndTransparency(); // Apply default contrast and transparency
+            }
+            img.src = URL.createObjectURL(event.target.files[0]);
+            document.getElementById('imageLoader').value = null; // Reset file input
+        }
+
+        // Function to display image preview
+        function showImagePreview(imgOrCanvas) {
+            var previewContainer = document.getElementById('imagePreview');
+            previewContainer.innerHTML = ''; // Clear previous preview
+            var previewImg = document.createElement('img');
+            previewImg.src = imgOrCanvas.toDataURL ? imgOrCanvas.toDataURL() : imgOrCanvas.src;
+            previewImg.style.maxWidth = '100%';
+            previewImg.style.maxHeight = '100%';
+            previewContainer.appendChild(previewImg);
+        }
+
+        // Function to apply contrast adjustment to the image
+        function adjustContrastAndTransparency() {
+            var contrast = parseInt(document.getElementById('contrastRange').value);
+            var alpha = parseFloat(document.getElementById('alphaRange').value);
+            adjustContrast(contrast, alpha);
+        }
+
+        // Function to apply contrast adjustment to the image
+        function adjustContrast(contrast, alpha) {
+            var canvas = document.getElementById('imageCanvas');
+            var ctx = canvas.getContext('2d');
+            var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            var data = imageData.data;
+
+            // Apply contrast and transparency
+            var factor = (259 * (contrast + 255)) / (255 * (259 - contrast));
+            for (var i = 0; i < data.length; i += 4) {
+                data[i] = factor * (data[i] - 128) + 128;
+                data[i + 1] = factor * (data[i + 1] - 128) + 128;
+                data[i + 2] = factor * (data[i + 2] - 128) + 128;
+                data[i + 3] = alpha; // Set alpha value
+            }
+
+            ctx.putImageData(imageData, 0, 0);
+            showImagePreview(canvas); // Update preview with adjusted image
+        }
+
+        // Event listeners for contrast and transparency input
+        document.getElementById('contrastRange').addEventListener('input', adjustContrastAndTransparency);
+        document.getElementById('alphaRange').addEventListener('input', adjustContrastAndTransparency);
+
+        // Function to save the image
+        function saveImage(canvasId) {
+            var canvas = document.getElementById(canvasId);
+            var link = document.createElement('a');
+            link.download = 'adjusted_image.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body> {% endcomment %}
 
 
 
@@ -698,13 +558,11 @@ viewBox="0 0 512.008 512.008" xml:space="preserve">
 </g>
 </g>
 </svg>
-    <div>
-        <h3 class="text-lg font-bold">Welcome to the Image Editor</h3>
-        <p>Image editing tool will
-            help you enhance and customize your images effortlessly.</p>
-        
-    
-    </div>
+<div>
+    <h3 class="text-lg font-bold">Welcome to the Image Editor</h3>
+    <p>Discover our image editing tool to  <br>effortlessly enhance and customize your images.<br>Give it a try today!</p>    
+</div>
+
 
     <!-- Pencil section --> 
 <div class="flex items-center">
@@ -748,23 +606,24 @@ c-3.981-0.178-13.301-2.27-24.88-5.395c-0.264-5.616,1.812-11.18,5.848-15.219c4.03
 c3.119,11.556,5.209,20.864,5.394,24.858c-0.032,0.446-0.027,0.898,0.017,1.349C495.911,495.663,495.922,495.805,495.861,495.866z"
 />
 </svg>
+
     <div>
         <h3 class="text-lg font-bold">How to Use Image Editing Tool</h3>
         <p class="text-md pr-20">
-            <li>Click on the "Choose Files" button to upload image</li>
-            <li>Use the sliders provided under each section to adjust the settings then save the image</li>
-            <li>Click the "Save Image" button to save and download</li>
+            Select Files, Customize, and Save.<br>
+            Then explore our <a href="/imageCombine/" class="text-blue-500 hover:underline">BLEND</a> page.<br>
+            HAVE FUN!
         </p>
-        
     </div>
+    
 </div>
 </div>
 </div>
+
+
+
+
+
 
     
-    
-
-
-
-
 {% endblock %}

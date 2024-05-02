@@ -1,3 +1,14 @@
+<<<<<<< Updated upstream
+=======
+from io import BytesIO
+from multiprocessing import context
+
+from PIL import Image
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
+>>>>>>> Stashed changes
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 
@@ -58,3 +69,15 @@ def signup_view(request):
             
     context = {'form':form}
     return render(request, "pages/signup.html", context)
+
+def contact_us(request):
+    context = {}
+    return render(request, 'pages/contactUs.html', context)
+
+def privacy_policy(request):
+    context = {}
+    return render(request, 'pages/privacyPolicy.html', context)
+
+def license_policy(request):
+    context = {}
+    return render(request, 'pages/license.html', context)
