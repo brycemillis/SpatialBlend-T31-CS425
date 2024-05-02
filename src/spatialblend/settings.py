@@ -76,11 +76,30 @@ WSGI_APPLICATION = 'spatialblend.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
+<<<<<<< Updated upstream
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+=======
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': BASE_DIR / 'db.sqlite3',
+     }
+ }
+
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'spatialblend',
+#        'USER': 'postgres',
+#        'PASSWORD':'postgres',  # Enter your database password here 
+#        'HOST':'localhost',
+#        'POST':'5432'
+#    }
+# }
+>>>>>>> Stashed changes
 
 
 # Password validation
