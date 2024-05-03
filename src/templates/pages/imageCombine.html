@@ -6,7 +6,7 @@
 </head>
 
 <body>
-	<div class="mb-4 text-center">
+    <div class="mb-4 text-center">
         <h1 class="font-bold text-5xl">Image Blender</h1>
     </div>
     <div class="width-full mx-auto md:max-w-screen-xl">
@@ -21,13 +21,14 @@
                     <label for="id_image2" class="bg-white mt-4 hover:bg-gray-200 text-black p-2 rounded cursor-pointer">Choose Second Image</label>
                 </div>
             </div>
-            <div class="text-center mt-4">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Begin Blend and Download</button>
-            </div>
         </form>
-        <div class="mt-4 text-center">
-            <p class="text-blue-700">Click "Begin Blend and Download" to blend your images and download the result automatically.</p>
-        </div>
+    </div>
+
+	<div id="live_preview" class="mt-4 mx-auto md:max-w-screen-xl text-center hidden" style="background: #f0f0f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; height: 300px; width: 80%; max-width: 600px;">
+		<img id="preview_image" src="" alt="Hybrid Image Preview" style="max-width: 100%; max-height: 250px; object-fit: contain;">
+	</div>
+    <div class="text-center mt-4" id="downloadButton" style="display: none;">
+        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" download="HybridImage.png">Download Hybrid Image</a>
     </div>
 	
     <div class="flex flex-col md:flex-row justify-between items-center px-4 py-2 mt-16 md:w-10/12 mx-auto md:max-w-screen-xl">   
@@ -226,6 +227,45 @@
 		dropdownMenu.classList.add('hidden');
 	});
 </script>
+
+
+<!-- Add a section to display the live preview -->
+<script>
+    document.getElementById('id_image1').addEventListener('change', function() {
+        handleImageUpload(this.form);
+    });
+
+    document.getElementById('id_image2').addEventListener('change', function() {
+        handleImageUpload(this.form);
+    });
+
+	function handleImageUpload(form) {
+		var formData = new FormData(form);
+		fetch("{% url 'image_combine' %}", {
+			method: 'POST',
+			body: formData,
+			headers: {
+				'X-CSRFToken': '{{ csrf_token }}',
+				'X-Requested-With': 'XMLHttpRequest'
+			},
+			credentials: 'same-origin'
+		}).then(response => response.json())
+		.then(data => {
+			if (data.hybrid_image_url) {
+				var previewImage = document.getElementById('preview_image');
+				var downloadButton = document.getElementById('downloadButton');
+				// Append a timestamp to the image URL to prevent caching
+				var uniqueImageUrl = data.hybrid_image_url + '?t=' + new Date().getTime();
+				previewImage.src = uniqueImageUrl;
+				downloadButton.querySelector('a').href = uniqueImageUrl; // Set the download link dynamically
+				document.getElementById('live_preview').classList.remove('hidden');
+				downloadButton.style.display = 'block'; // Show the download button
+			}
+		}).catch(error => console.error('Error:', error));
+    }
+</script>
+
+
 
 </body>
 
