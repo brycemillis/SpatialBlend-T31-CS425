@@ -7,11 +7,11 @@ from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.http import HttpResponse
-from .models import Image as ImageModel
+from django.http import JsonResponse
 
 from .forms import CreateUserForm, ImageUploadForm
 from .image_processing import create_hybrid_image
+import uuid
 
 
 def home_view(request):
@@ -27,33 +27,26 @@ def learn_more_view(request):
     return render(request, "pages/learnMore.html", context)
 
 def image_combine_view(request):
-    context = {}
-    if request.method == 'POST':
+    if request.method == 'POST' and request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
             image1 = Image.open(request.FILES['image1'])
             image2 = Image.open(request.FILES['image2'])
-            hybrid_image = create_hybrid_image(image1, image2, low_pass_cutoff=20, high_pass_cutoff=40)
+            hybrid_image = create_hybrid_image(image1, image2)  # Implement the logic for combining images
 
             image_io = BytesIO()
-            hybrid_image.save(image_io, format='PNG')
+            hybrid_image.save(image_io, format='PNG', quality=90)
             image_io.seek(0)
+            # Generate a unique filename using UUID
+            unique_filename = f'hybrid_image_result_{uuid.uuid4().hex}.png'
+            default_storage.save(unique_filename, ContentFile(image_io.getvalue()))
+            hybrid_image_url = default_storage.url(unique_filename)
 
-            if request.user.is_authenticated:
-                image_model_instance = ImageModel()
-                image_model_instance.user = request.user
-                image_model_instance.image.save('hybrid_image_result.png', ContentFile(image_io.getvalue()))
-                image_model_instance.save()
-                messages.success(request, "Hybrid image created and saved successfully!")
-            
-            response = HttpResponse(image_io.getvalue(), content_type='image/png')
-            response['Content-Disposition'] = 'attachment; filename="hybrid_image_result.png"'
-            return response
-    else:
-        form = ImageUploadForm()
-    
-    context['form'] = form
-    return render(request, "pages/imageCombine.html", context)
+            return JsonResponse({'hybrid_image_url': hybrid_image_url})
+
+    # Handle non-AJAX POST request or initial GET request
+    form = ImageUploadForm()
+    return render(request, "pages/imageCombine.html", {'form': form})
 
 def image_editor_view(request):
     context = {}
@@ -94,3 +87,15 @@ def signup_view(request):
             
     context = {'form':form}
     return render(request, "pages/signup.html", context)
+
+def contact_us(request):
+    context = {}
+    return render(request, 'pages/contactUs.html', context)
+
+def privacy_policy(request):
+    context = {}
+    return render(request, 'pages/privacyPolicy.html', context)
+
+def license_policy(request):
+    context = {}
+    return render(request, 'pages/license.html', context)
