@@ -139,6 +139,10 @@ STATIC_ROOT = BASE_DIR.parent / "local-cdn" / "static"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Media files (uploaded by users)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # SMPT
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
